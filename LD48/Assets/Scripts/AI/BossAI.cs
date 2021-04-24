@@ -113,6 +113,7 @@ public class BossAI : MonoBehaviour
         if(m_state != BossState.Dying)
         {
             GetComponent<Collider2D>().enabled = false;
+            GameMaster.GetAudioManager().StopBGM();
             ChangeState(BossState.Dying);
         }
     }

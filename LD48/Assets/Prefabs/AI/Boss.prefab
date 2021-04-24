@@ -149,8 +149,8 @@ MonoBehaviour:
   m_restChance: 0.25
   m_stage2HealthThreshold: 75
   m_stage3HealthThreshold: 30
-  m_minimumRestTime: 5
-  m_maximumRestTime: 10
+  m_minimumRestTime: 3
+  m_maximumRestTime: 5
   m_roarTime: 2
   m_pounceChargeTime: 2
   m_pounceSpeed: 20
@@ -166,7 +166,8 @@ MonoBehaviour:
   m_spinAttackBulletSpeed: 10
   m_shotgunDuration: 5
   m_shotgunAttackSpeed: 0.5
-  m_shotgunAttackInaccuracy: 0.75
+  m_shotgunAttackInaccuracy: 0.25
+  m_shotgunAttackVelocityVariance: 2
   m_shotgunAttackCountMin: 7
   m_shotgunAttackCountMax: 10
   m_shotgunBulletSpeed: 10
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_playerImpactDamage: 2
   m_stage3Colour: {r: 1, g: 0.37588555, b: 0, a: 1}
   m_deathDuration: 5
-  m_deathDrop: {fileID: 0}
+  m_deathDrop: {fileID: 3619516752318740473, guid: 6b733d7bcdd9a2f45901dc9ccb16f9ce, type: 3}
 --- !u!58 &186167548695494612
 CircleCollider2D:
   m_ObjectHideFlags: 0

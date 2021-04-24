@@ -7,6 +7,8 @@ public class GameMaster : MonoBehaviour
     static GameMaster m_master = null;
     GameObject m_player = null;
     PlayerCamera m_playerCamera = null;
+    AudioManager m_audioManager = null;
+
     static public GameMaster GetGameMaster()
     {
         if(m_master == null)
@@ -35,6 +37,16 @@ public class GameMaster : MonoBehaviour
     public static PlayerCamera GetPlayerCamera()
     {
         return GetGameMaster().m_playerCamera;
+    }
+
+    public static void RegisterAudioManager(AudioManager _manager)
+    {
+        GetGameMaster().m_audioManager = _manager;
+    }
+
+    public static AudioManager GetAudioManager()
+    {
+        return GetGameMaster().m_audioManager;
     }
 }
 

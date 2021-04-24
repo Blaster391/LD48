@@ -10,6 +10,8 @@ public class PlayerEndGame : MonoBehaviour
     [SerializeField]
     private float m_endGameLerpTime = 10.0f;
     [SerializeField]
+    private float m_endGameMusicStartTime = 5.0f;
+    [SerializeField]
     private float m_endGameCameraColourFadeTime = 5.0f;
     [SerializeField]
     private float m_endGameWhiteoutTime = 5.0f;
@@ -21,6 +23,7 @@ public class PlayerEndGame : MonoBehaviour
     private Color m_endSkyboxColour;
 
     private bool m_finished = false;
+    private bool m_musicStarted = false;
     private float m_progress = 0.0f;
     private Vector3 m_startPosition;
     private Color m_skyboxStartColour;
@@ -57,6 +60,12 @@ public class PlayerEndGame : MonoBehaviour
         if(m_finished)
         {
             m_progress += Time.deltaTime;
+
+            if(m_progress > m_endGameMusicStartTime && !m_musicStarted)
+            {
+                m_musicStarted = true;
+                GameMaster.GetAudioManager().PlayEndGameTrack();
+            }
 
             transform.position = Vector3.Lerp(m_startPosition, m_endGamePoint.transform.position, m_progress / m_endGameLerpTime);
 

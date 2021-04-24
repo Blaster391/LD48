@@ -4,6 +4,30 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject m_quitGameNotification;
+
+    float m_quitTimer = 0.0f;
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            m_quitTimer += Time.deltaTime;
+            if(m_quitTimer > 1.0f)
+            {
+                Application.Quit();
+            }
+
+            m_quitGameNotification.SetActive(true);
+        }
+        else
+        {
+            m_quitTimer = 0.0f;
+            m_quitGameNotification.SetActive(false);
+        }
+    }
+
     public bool AttackPressed()
     {
         return AttackUpPressed() || AttackDownPressed() || AttackLeftPressed() || AttackRightPressed();
