@@ -23,7 +23,9 @@ public class AIDamage : IDamageReceiver
             if(m_bossAI)
             {
                 m_bossAI.Die();
+                return;
             }
+
             if(m_scribbler != null)
             {
                 m_scribbler.BeginScribble();

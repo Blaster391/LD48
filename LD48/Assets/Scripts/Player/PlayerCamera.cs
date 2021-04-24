@@ -10,10 +10,16 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     private float m_lerpToTriggerTime = 1.0f;
 
+    [SerializeField]
+    private float m_shakeLerp = 0.25f;
+    [SerializeField]
+    private float m_shakeDistance = 0.25f;
+
     private GameObject m_player;
     private PlayerCameraTriggerArea m_triggerArea = null;
     private float m_lerpAmount = 1.0f;
     private Vector3 m_lerpPosition;
+    private bool m_shaking = false;
 
     private void Awake()
     {
@@ -75,4 +81,9 @@ public class PlayerCamera : MonoBehaviour
         m_lerpAmount = 0.0f;
     }
 
+
+    public void SetCameraShake(bool _shake)
+    {
+        m_shaking = _shake;
+    }
 }

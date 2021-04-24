@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 186167548695494615}
   - component: {fileID: 186167548695494612}
   - component: {fileID: 186167548695494613}
+  - component: {fileID: 885157723}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -114,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 10
-  m_accelerationRate: 10000
+  m_accelerationRate: 100000
   m_wanderSpeedMod: 0.5
   m_wanderWhenInactive: 0
   m_wanderAlways: 0
@@ -142,6 +143,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d40210caedb684fb9235c662512058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_shotgunChance: 0.5
+  m_spinChance: 0.5
+  m_summonChance: 0.5
+  m_restChance: 0.25
+  m_stage2HealthThreshold: 75
+  m_stage3HealthThreshold: 30
+  m_minimumRestTime: 5
+  m_maximumRestTime: 10
+  m_roarTime: 2
+  m_pounceChargeTime: 2
+  m_pounceSpeed: 20
+  m_pounceTime: 2
+  m_spinAttackRotationSpeed: 15
+  m_spinAttackMovementSpeed: 10
+  m_spinAttackStageRotationSpeedMod: 1.5
+  m_spinAttackDuration: 5
+  m_spinAttackStageDurationMod: 2
+  m_spinAttackStageSpeedMod: 2
+  m_spinAttackWindup: 2
+  m_spinAttackSpeed: 2
+  m_spinAttackBulletSpeed: 10
+  m_shotgunDuration: 5
+  m_shotgunAttackSpeed: 0.5
+  m_shotgunAttackInaccuracy: 0.75
+  m_shotgunAttackCountMin: 7
+  m_shotgunAttackCountMax: 10
+  m_shotgunBulletSpeed: 10
+  m_summonDuration: 5
+  m_summonSpeed: 1
+  m_playerImpactDamage: 2
+  m_stage3Colour: {r: 1, g: 0.37588555, b: 0, a: 1}
+  m_deathDuration: 5
+  m_deathDrop: {fileID: 0}
 --- !u!58 &186167548695494612
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,12 +204,26 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 0
+  m_Mass: 100
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &885157723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186167548695494639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe799ace9e25d6644a528a460ec0d4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bulletPrefab: {fileID: 6353848712235746294, guid: 85bd766ec72c19f439ca362700931407, type: 3}
+  m_isEnemy: 1

@@ -29,6 +29,7 @@ public class AITriggerSpawner : MonoBehaviour
         {
             if (!SpawnedMonstersStillLive() && (m_chance >= Random.value))
             {
+                m_spawnedMonsters.Clear();
                 m_triggered = true;
                 Spawn();
             }
@@ -57,7 +58,6 @@ public class AITriggerSpawner : MonoBehaviour
         }
 
         m_availableSpawns = m_spawnPoints.ToList();
-        m_spawnedMonsters.Clear();
 
         int numberToSpawn = Random.Range(m_min, m_max + 1);
         for(int i = 0; i < numberToSpawn; ++i)

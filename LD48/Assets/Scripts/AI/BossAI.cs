@@ -75,7 +75,7 @@ public class BossAI : MonoBehaviour
     private float m_shotgunBulletSpeed = 5.0f;
 
     [SerializeField]
-    private float m_summonDuration = 5.0f;
+    private float m_summonDuration = 3.0f;
     [SerializeField]
     private float m_summonSpeed = 1.0f;
 
@@ -98,15 +98,21 @@ public class BossAI : MonoBehaviour
     private int m_stage = 1;
     private Vector2 m_pounceDestination;
     private GameObject m_player;
+    private PlayerCamera m_camera;
 
     private bool m_stateChanged = false;
     private float m_timeInState = 0.0f;
     private float m_timeSinceLastShot = 0.0f;
+    private float m_timeSinceLastSpawned = 0.0f;
     private float m_randomisedTotalTimeInState = 0.0f;
     private bool m_pounceComplete = false;
     public void Die()
     {
-        ChangeState(BossState.Dying);
+        if(m_state != BossState.Dying)
+        {
+            GetComponent<Collider2D>().enabled = false;
+            ChangeState(BossState.Dying);
+        }
     }
 
     void Start()
@@ -117,12 +123,13 @@ public class BossAI : MonoBehaviour
         m_movement = GetComponent<AIMovementHelper>();
         m_shooting = GetComponent<ShootingHelper>();
         m_player = GameMaster.GetPlayer();
+        m_camera = GameMaster.GetPlayerCamera();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(m_triggerableAI.Active())
+        if(m_triggerableAI.Active() || m_health.IsDead())
         {
             UpdateBossState();
         }
@@ -226,6 +233,8 @@ public class BossAI : MonoBehaviour
 
     private void RoarState()
     {
+        m_camera.SetCameraShake(true);
+
         if (m_timeInState > m_roarTime * 0.5f && m_stage == 3)
         {
             m_renderer.color = m_stage3Colour;
@@ -233,6 +242,7 @@ public class BossAI : MonoBehaviour
 
         if (m_timeInState > m_roarTime)
         {
+            m_camera.SetCameraShake(false);
             ChooseNextState();
         }
     }
@@ -357,22 +367,37 @@ public class BossAI : MonoBehaviour
 
     private void SummonState()
     {
+        m_camera.SetCameraShake(true);
 
-        if(m_timeInState > m_summonDuration)
+        float spawnRate = 1 / (m_summonSpeed);
+        m_timeSinceLastSpawned += Time.deltaTime;
+        if (m_timeSinceLastSpawned > spawnRate)
         {
+            m_timeSinceLastSpawned = 0.0f;
+            m_triggerableAI.GetTriggerArea().GetComponent<AITriggerSpawner>().Spawn();
+        }
+
+        if (m_timeInState > m_summonDuration)
+        {
+            m_camera.SetCameraShake(false);
             ChooseNextState();
         }
     }
 
     private void DyingState()
     {
-        if (m_timeInState == 0.0f)
-        {
-            m_triggerableAI.GetTriggerArea().GetComponent<AITriggerSpawner>().KillAllAI();
-        }
+        m_camera.SetCameraShake(true);
+
+        m_triggerableAI.GetTriggerArea().GetComponent<AITriggerSpawner>().KillAllAI();
+  
+        float fadeLerp = 1.0f - (m_timeInState / m_deathDuration);
+        Color bossColour = m_renderer.color;
+        bossColour.a = fadeLerp;
+        m_renderer.color = bossColour;
 
         if (m_timeInState > m_deathDuration)
         {
+            m_camera.SetCameraShake(false);
             Instantiate<GameObject>(m_deathDrop, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
