@@ -37,3 +37,16 @@ public class GameMaster : MonoBehaviour
         return GetGameMaster().m_playerCamera;
     }
 }
+
+public static class MathsHelper
+{
+    public static float RandomWithNegative()
+    {
+        return Random.Range(-1.0f, 1.0f);
+    }
+
+    public static Vector2 RandomWithNegativeVector2()
+    {
+        return new Vector2(MathsHelper.RandomWithNegative(), MathsHelper.RandomWithNegative());
+    }
+}

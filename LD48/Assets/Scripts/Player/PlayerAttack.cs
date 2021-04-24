@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
-
+    [SerializeField]
+    private float m_baseInaccuracy = 0.01f;
     [SerializeField]
     private float m_baseAttackSpeed = 1.0f;
     [SerializeField]
@@ -19,11 +19,12 @@ public class PlayerAttack : MonoBehaviour
     private int m_currentAttackDamage = 0;
     [SerializeField]
     private float m_currentProjectileSpeed = 0;
-
     [SerializeField]
-    private GameObject m_bulletPrefab = null;
+    private float m_currentInaccuracy = 0.0f;
+
     private PlayerControls m_controls;
     private PlayerMovement m_movement;
+    private ShootingHelper m_shoot;
 
     private float m_attackCooldown = 0.0f;
 
@@ -31,10 +32,12 @@ public class PlayerAttack : MonoBehaviour
     {
         m_controls = GetComponent<PlayerControls>();
         m_movement = GetComponent<PlayerMovement>();
+        m_shoot = GetComponent<ShootingHelper>();
 
         m_currentAttackSpeed = m_baseAttackSpeed;
         m_currentAttackDamage = m_baseAttackDamage;
         m_currentProjectileSpeed = m_baseProjectileSpeed;
+        m_currentInaccuracy = m_baseInaccuracy;
     }
 
     // Update is called once per frame
@@ -58,12 +61,10 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         Vector2 attackDirection = GetAttackDirection();
-
-        GameObject bullet = Instantiate<GameObject>(m_bulletPrefab);
-        bullet.transform.position = gameObject.transform.position;
-
+        attackDirection += MathsHelper.RandomWithNegativeVector2() * m_currentInaccuracy;
         Vector2 attackVelocity = attackDirection * m_currentProjectileSpeed + m_movement.CurrentVelocity();
-        bullet.GetComponent<Bullet>().SetupBullet(attackVelocity, gameObject, m_currentAttackDamage);
+        m_shoot.Shoot(attackVelocity, m_currentAttackDamage);
+
     }
 
     public Vector2 GetAttackDirection()

@@ -8,8 +8,6 @@ public class ImpactAttackAI : MonoBehaviour
     [SerializeField]
     private int m_damage = 1;
 
-    private float m_age = 0.0f;
-
     private GameObject m_player;
     private TriggerableAI m_triggerableAI;
     private AIMovementHelper m_movement;

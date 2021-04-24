@@ -21,11 +21,6 @@ public class AITriggerArea : MonoBehaviour
         if (collision.gameObject == GameMaster.GetPlayer())
         {
             m_active = true;
-
-            if(m_spawner != null)
-            {
-                m_spawner.NotifyPlayerEntered();
-            }
         }
     }
 
