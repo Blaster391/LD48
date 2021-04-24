@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_endGamePoint: {fileID: 770677000}
   m_endGameLerpTime: 10
-  m_endGameMusicStartTime: 5
+  m_endGameMusicStartTime: 2.5
   m_endGameCameraColourFadeTime: 5
   m_endGameWhiteoutTime: 5
   m_gameEndPanel: {fileID: 275914551}
