@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,6 +57,16 @@ public class PlayerMovement : MonoBehaviour
                 m_rigidBody.velocity = velocity * m_currentMovementSpeed;
             }
         }
+    }
+
+    internal void PowerUpSpeed()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void PowerDownSpeed()
+    {
+        throw new NotImplementedException();
     }
 
     public Vector2 CurrentVelocity()

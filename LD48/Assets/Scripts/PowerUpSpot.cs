@@ -14,6 +14,7 @@ public enum PowerUpTypes
     // Also negatives
     HealthDown,
     SpeedDown,
+    AttackDamageDown,
     AttackSpeedDown,
     AccuracyDown
 }

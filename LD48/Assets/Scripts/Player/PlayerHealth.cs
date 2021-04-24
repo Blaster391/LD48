@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,14 @@ public class PlayerHealth : IDamageReceiver
         if(m_currentHealth <= 0)
         {
             m_scribbler.BeginScribble();
+        }
+    }
+
+    public void IncrementCurrentHealth()
+    {
+        if(m_currentHealth < m_maxHealth)
+        {
+            m_currentHealth++;
         }
     }
 
@@ -59,5 +68,23 @@ public class PlayerHealth : IDamageReceiver
                 SceneManager.LoadScene(0, LoadSceneMode.Single);
             }
         }
+    }
+
+    public void PowerDownHealth()
+    {
+        m_maxHealth--;
+        if(m_currentHealth > m_maxHealth)
+        {
+            m_currentHealth = m_maxHealth;
+            if(m_maxHealth == 0)
+            {
+                m_scribbler.BeginScribble();
+            }
+        }
+    }
+
+    public void PowerUpHealth()
+    {
+        m_maxHealth++;
     }
 }
