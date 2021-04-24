@@ -8,6 +8,12 @@ public class PlayerCamera : MonoBehaviour
     private float m_cameraHeight = 10.0f;
 
     GameObject m_player;
+    PlayerCameraTriggerArea m_triggerArea = null;
+
+    private void Awake()
+    {
+        GameMaster.RegisterPlayerCamerea(gameObject);
+    }
 
     void Start()
     {
@@ -24,8 +30,29 @@ public class PlayerCamera : MonoBehaviour
 
     Vector3 GetDesiredCameraPosition()
     {
-        Vector3 cameraPosition = m_player.transform.position;
+        Vector3 cameraPosition = transform.position;
+        if (m_triggerArea != null)
+        {
+            cameraPosition = m_triggerArea.transform.position;
+        }
+        else if(m_player != null)
+        {
+            cameraPosition = m_player.transform.position;
+        }
+
         cameraPosition = new Vector3(cameraPosition.x, cameraPosition.y, m_cameraHeight);
         return cameraPosition;
     }
+
+
+    public void RegisterTriggerArea(PlayerCameraTriggerArea _triggerArea)
+    {
+        m_triggerArea = _triggerArea;
+    }
+
+    public void ClearTriggerArea()
+    {
+        m_triggerArea = null;
+    }
+
 }
