@@ -7,6 +7,12 @@ public class TriggerableAI : MonoBehaviour
 
     public bool Active()
     {
+        AIDamage damage = GetComponent<AIDamage>();
+        if(damage != null && damage.IsDead())
+        {
+            return false;
+        }
+
         return (m_triggerArea == null || m_triggerArea.Active());
     }
 

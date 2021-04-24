@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class ShootingAI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject m_player;
+    private TriggerableAI m_triggerableAI;
+    private AIMovementHelper m_movement;
+
     void Start()
     {
-        
+        m_player = GameMaster.GetPlayer();
+        m_triggerableAI = GetComponent<TriggerableAI>();
+        m_movement = GetComponent<AIMovementHelper>();
     }
 
     // Update is called once per frame
