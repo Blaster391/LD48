@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,13 @@ public class PlayerAttack : MonoBehaviour
     private float m_currentProjectileSpeed = 0;
     [SerializeField]
     private float m_currentInaccuracy = 0.0f;
+    [SerializeField]
+    private int m_currentAttackCount = 1;
+
+    [SerializeField]
+    private float m_attackAccuracyPowerUpMod = 0.5f;
+    [SerializeField]
+    private float m_attackSpeedPowerUpMod = 1.0f;
 
     private PlayerControls m_controls;
     private PlayerMovement m_movement;
@@ -70,13 +78,58 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    internal void PowerUpCount()
+    {
+        m_currentAttackCount++;
+    }
+
+    internal void PowerUpSpeed()
+    {
+        m_currentAttackSpeed += m_attackSpeedPowerUpMod;
+    }
+
+    internal void PowerUpAccuracy()
+    {
+        m_currentInaccuracy *= m_attackAccuracyPowerUpMod;
+    }
+
+    internal void PowerUpDamage()
+    {
+        m_currentAttackDamage++;
+    }
+
     void Attack()
     {
         Vector2 attackDirection = GetAttackDirection();
-        attackDirection += MathsHelper.RandomWithNegativeVector2() * m_currentInaccuracy;
-        Vector2 attackVelocity = attackDirection * m_currentProjectileSpeed + m_movement.CurrentVelocity() * m_velocityMod;
-        m_shoot.Shoot(attackVelocity, m_currentAttackDamage);
+        for(int i = 0; i < m_currentAttackCount; ++i)
+        {
+            attackDirection += MathsHelper.RandomWithNegativeVector2() * (m_currentInaccuracy * i+1);
+            Vector2 attackVelocity = attackDirection * m_currentProjectileSpeed + m_movement.CurrentVelocity() * m_velocityMod;
+            m_shoot.Shoot(attackVelocity, m_currentAttackDamage);
+        }
+    }
 
+    internal void PowerDownDamage()
+    {
+        m_currentAttackDamage--;
+        if(m_currentAttackDamage < 1)
+        {
+            m_currentAttackDamage = 1;
+        }
+    }
+
+    internal void PowerDownSpeed()
+    {
+        m_currentAttackSpeed -= m_attackSpeedPowerUpMod;
+        if(m_currentAttackSpeed < m_baseAttackSpeed)
+        {
+            m_currentAttackSpeed = m_baseAttackSpeed;
+        }
+    }
+
+    internal void PowerDownAccuracy()
+    {
+        m_currentInaccuracy /= m_attackAccuracyPowerUpMod;
     }
 
     public Vector2 GetAttackDirection()

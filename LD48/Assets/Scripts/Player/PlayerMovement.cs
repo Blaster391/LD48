@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float m_baseMovementSpeed = 1.0f;
 
+    [SerializeField]
+    private float m_powerUpSpeedIncrement = 1.0f;
+
     private Rigidbody2D m_rigidBody;
     private PlayerControls m_controls;
     private Vector2 m_lastMovementDirection = Vector2.down;
@@ -61,12 +64,16 @@ public class PlayerMovement : MonoBehaviour
 
     internal void PowerUpSpeed()
     {
-        throw new NotImplementedException();
+        m_currentMovementSpeed += m_powerUpSpeedIncrement;
     }
 
     internal void PowerDownSpeed()
     {
-        throw new NotImplementedException();
+        m_currentMovementSpeed -= m_powerUpSpeedIncrement;
+        if(m_currentMovementSpeed < m_baseMovementSpeed)
+        {
+            m_currentMovementSpeed = m_baseMovementSpeed;
+        }
     }
 
     public Vector2 CurrentVelocity()

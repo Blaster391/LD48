@@ -9,6 +9,11 @@ public class DestroyableProp : IDamageReceiver
     [SerializeField]
     private int m_currentHealth = 1;
 
+    [SerializeField]
+    private GameObject m_drop = null;
+    [SerializeField]
+    private float m_dropChance = 0.0f;
+
     private Scribbler m_scribbler = null;
 
     private void Start()
@@ -23,6 +28,14 @@ public class DestroyableProp : IDamageReceiver
         m_currentHealth -= _damage;
         if(m_currentHealth <= 0)
         {
+            if(m_drop != null)
+            {
+                if(m_dropChance >= Random.value)
+                {
+                    Instantiate<GameObject>(m_drop, transform.position, Quaternion.identity);
+                }
+            }
+
             if (m_scribbler != null)
             {
                 m_scribbler.BeginScribble();
