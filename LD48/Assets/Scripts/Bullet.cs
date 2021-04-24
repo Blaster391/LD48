@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D m_rigidbody;
     private GameObject m_firer = null;
     private int m_damage = 0;
+    private bool m_enemyBullet = false;
 
     void Awake()
     {
@@ -26,11 +27,12 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void SetupBullet(Vector2 _velocity, GameObject _firer, int _damage)
+    public void SetupBullet(Vector2 _velocity, GameObject _firer, int _damage, bool _enemyBullet)
     {
         m_firer = _firer;
         m_rigidbody.velocity = _velocity;
         m_damage = _damage;
+        m_enemyBullet = _enemyBullet;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -40,7 +42,11 @@ public class Bullet : MonoBehaviour
             IDamageReceiver damageReceiver = collider.gameObject.GetComponent<IDamageReceiver>();
             if (damageReceiver != null)
             {
-                damageReceiver.ReceiveDamage(m_damage);
+                if(!m_enemyBullet || collider.gameObject == GameMaster.GetPlayer())
+                {
+                    damageReceiver.ReceiveDamage(m_damage);
+                }
+
                 Destroy(gameObject);
             }
         }

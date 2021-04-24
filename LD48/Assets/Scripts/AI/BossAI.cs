@@ -41,6 +41,7 @@ public class BossAI : MonoBehaviour
     private float m_pounceSpeed = 10.0f;
     [SerializeField]
     private float m_pounceTime = 2.0f;
+
     [SerializeField]
     private float m_spinAttackRotationSpeed = 1.0f;
     [SerializeField]
@@ -58,6 +59,9 @@ public class BossAI : MonoBehaviour
     [SerializeField]
     private float m_spinAttackSpeed = 2.0f;
     [SerializeField]
+    private float m_spinAttackBulletSpeed = 10.0f;
+
+    [SerializeField]
     private float m_shotgunDuration = 5.0f;
     [SerializeField]
     private float m_shotgunAttackSpeed = 0.5f;
@@ -67,6 +71,9 @@ public class BossAI : MonoBehaviour
     private int m_shotgunAttackCountMin = 5;
     [SerializeField]
     private int m_shotgunAttackCountMax = 7;
+    [SerializeField]
+    private float m_shotgunBulletSpeed = 5.0f;
+
     [SerializeField]
     private float m_summonDuration = 5.0f;
     [SerializeField]
@@ -86,6 +93,7 @@ public class BossAI : MonoBehaviour
     private TriggerableAI m_triggerableAI;
     private AIDamage m_health = null;
     private AIMovementHelper m_movement = null;
+    private ShootingHelper m_shooting = null;
     private BossState m_state = BossState.Roar;
     private int m_stage = 1;
     private Vector2 m_pounceDestination;
@@ -93,6 +101,7 @@ public class BossAI : MonoBehaviour
 
     private bool m_stateChanged = false;
     private float m_timeInState = 0.0f;
+    private float m_timeSinceLastShot = 0.0f;
     private float m_randomisedTotalTimeInState = 0.0f;
     private bool m_pounceComplete = false;
     public void Die()
@@ -106,6 +115,7 @@ public class BossAI : MonoBehaviour
         m_triggerableAI = GetComponent<TriggerableAI>();
         m_health = GetComponent<AIDamage>();
         m_movement = GetComponent<AIMovementHelper>();
+        m_shooting = GetComponent<ShootingHelper>();
         m_player = GameMaster.GetPlayer();
     }
 
@@ -198,13 +208,14 @@ public class BossAI : MonoBehaviour
             return;
         }
 
-        if(m_shotgunChance > Random.value)
+        float shotgunChance = m_state != BossState.Shotgun ? m_shotgunChance : m_shotgunChance * 0.5f;
+        if (shotgunChance > Random.value)
         {
             ChangeState(BossState.Shotgun);
             return;
         }
 
-        if (m_state != BossState.Rest && m_restChance > Random.value)
+        if (m_state != BossState.Rest && m_state != BossState.Roar && m_restChance > Random.value)
         {
             ChangeState(BossState.Rest);
             return;
@@ -289,16 +300,28 @@ public class BossAI : MonoBehaviour
         transform.Rotate(new Vector3(0, 0, 1) * m_spinAttackRotationSpeed * m_spinAttackStageRotationSpeedMod * m_stage * Time.deltaTime);
         if (m_timeInState > m_spinAttackDuration * (m_spinAttackStageDurationMod * m_stage))
         {
-            if(Mathf.Abs(transform.eulerAngles.z) < 1)
+            if(Mathf.Abs(transform.eulerAngles.z) < 5.0f)
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 readyToEnd = true;
             }
         }
 
+        m_timeSinceLastShot += Time.deltaTime;
+
         if (m_timeInState > m_spinAttackWindup)
         {
+            float attackRate = 1 / (m_spinAttackSpeed * m_stage * m_spinAttackStageSpeedMod);
 
+            if (m_timeSinceLastShot > attackRate)
+            {
+                m_shooting.Shoot(transform.up * m_spinAttackBulletSpeed, 1);
+                m_shooting.Shoot(-transform.up * m_spinAttackBulletSpeed, 1);
+                m_shooting.Shoot(transform.right * m_spinAttackBulletSpeed, 1);
+                m_shooting.Shoot(-transform.right * m_spinAttackBulletSpeed, 1);
+
+                m_timeSinceLastShot = 0.0f;
+            }
         }
 
         if (readyToEnd)
@@ -309,6 +332,22 @@ public class BossAI : MonoBehaviour
 
     private void ShotgunState()
     {
+        m_timeSinceLastShot += Time.deltaTime;
+        float attackRate = 1 / (m_shotgunAttackSpeed);
+
+        if (m_timeSinceLastShot > attackRate)
+        {
+            m_timeSinceLastShot = 0.0f;
+            int bulletsToFire = Random.Range(m_shotgunAttackCountMin, m_shotgunAttackCountMax);
+            Vector2 playerDirection = m_movement.DirectionToPlayer();
+            for(int i = 0; i < bulletsToFire; ++i)
+            {
+                Vector2 attack = playerDirection * m_shotgunBulletSpeed;
+                attack += MathsHelper.RandomWithNegativeVector2() * m_shotgunAttackInaccuracy;
+                m_shooting.Shoot(attack, 1);
+            }
+
+        }
 
         if (m_timeInState > m_shotgunDuration)
         {
