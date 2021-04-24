@@ -19,6 +19,12 @@ public class TriggerableAI : MonoBehaviour
             return false;
         }
 
+        PlayerEndGame playerEndGame = GameMaster.GetPlayer()?.GetComponent<PlayerEndGame>();
+        if (playerEndGame != null && playerEndGame.IsGameFinished())
+        {
+            return false;
+        }
+
         return (m_triggerArea == null || m_triggerArea.Active());
     }
 

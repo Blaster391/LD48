@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D m_rigidBody;
     private PlayerControls m_controls;
     private Vector2 m_lastMovementDirection = Vector2.down;
+    private PlayerEndGame m_endGame;
+    private PlayerHealth m_health;
 
     [SerializeField]
     private float m_currentMovementSpeed;
@@ -27,12 +29,19 @@ public class PlayerMovement : MonoBehaviour
     {
         m_rigidBody = GetComponent<Rigidbody2D>();
         m_controls = GetComponent<PlayerControls>();
+        m_endGame = GetComponent<PlayerEndGame>();
+        m_health = GetComponent<PlayerHealth>();
         m_currentMovementSpeed = m_baseMovementSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(m_endGame.IsGameFinished() || m_health.IsDead())
+        {
+            return;
+        }
+
         Vector2 movementDirection = DesiredMovementDirection();
         if(movementDirection != Vector2.zero)
         {

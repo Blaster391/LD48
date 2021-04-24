@@ -28,6 +28,8 @@ public class PlayerAttack : MonoBehaviour
     private PlayerControls m_controls;
     private PlayerMovement m_movement;
     private ShootingHelper m_shoot;
+    private PlayerEndGame m_endGame;
+    private PlayerHealth m_health;
 
     private float m_attackCooldown = 0.0f;
 
@@ -36,6 +38,8 @@ public class PlayerAttack : MonoBehaviour
         m_controls = GetComponent<PlayerControls>();
         m_movement = GetComponent<PlayerMovement>();
         m_shoot = GetComponent<ShootingHelper>();
+        m_endGame = GetComponent<PlayerEndGame>();
+        m_health = GetComponent<PlayerHealth>();
 
         m_currentAttackSpeed = m_baseAttackSpeed;
         m_currentAttackDamage = m_baseAttackDamage;
@@ -46,6 +50,11 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_endGame.IsGameFinished() || m_health.IsDead())
+        {
+            return;
+        }
+
         if (m_currentAttackSpeed > 0)
         {
             m_attackCooldown += Time.deltaTime;
