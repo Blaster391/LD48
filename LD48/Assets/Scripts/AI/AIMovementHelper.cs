@@ -21,6 +21,11 @@ public class AIMovementHelper : MonoBehaviour
     private AIDamage m_damage;
     private Vector2 m_wanderTarget = Vector2.zero;
 
+    public void SetSpeed(float _speed)
+    {
+        m_speed = _speed;
+    }
+
     private void Awake()
     {
         m_damage = GetComponent<AIDamage>();

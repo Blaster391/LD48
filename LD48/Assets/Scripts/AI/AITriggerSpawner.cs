@@ -87,4 +87,12 @@ public class AITriggerSpawner : MonoBehaviour
             NotifyPlayerEntered();
         }
     }
+
+    public void KillAllAI()
+    {
+        foreach (GameObject monster in m_spawnedMonsters)
+        {
+            Destroy(monster);
+        }
+    }
 }

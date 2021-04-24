@@ -12,6 +12,10 @@ public class PlayerHealth : IDamageReceiver
     private int m_maxHealth;
     [SerializeField]
     private int m_currentHealth;
+    [SerializeField]
+    private float m_iFrameTime = 0.5f;
+
+    private float m_iFramesRemaining = 0.0f;
 
     [SerializeField]
     private GameObject m_gameOverScreen = null;
@@ -20,10 +24,19 @@ public class PlayerHealth : IDamageReceiver
 
     public override void ReceiveDamage(int _damage)
     {
+        if(IsInvincible())
+        {
+            return;
+        }
+
         m_currentHealth -= _damage;
         if(m_currentHealth <= 0)
         {
             m_scribbler.BeginScribble();
+        }
+        else
+        {
+            m_iFramesRemaining = m_iFrameTime;
         }
     }
 
@@ -38,6 +51,11 @@ public class PlayerHealth : IDamageReceiver
     public bool IsDead()
     {
         return (m_baseHealth <= 0);
+    }
+
+    public bool IsInvincible()
+    {
+        return m_iFramesRemaining > 0.0f;
     }
 
     public int GetCurrentHealth()
@@ -59,6 +77,11 @@ public class PlayerHealth : IDamageReceiver
     }
     private void Update()
     {
+        if(IsInvincible())
+        {
+            m_iFramesRemaining -= Time.deltaTime;
+        }
+
         if(m_scribbler.ScribblingComplete())
         {
             m_gameOverScreen.SetActive(true);
