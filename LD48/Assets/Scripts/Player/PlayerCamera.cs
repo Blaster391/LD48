@@ -7,8 +7,13 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     private float m_cameraHeight = 10.0f;
 
-    GameObject m_player;
-    PlayerCameraTriggerArea m_triggerArea = null;
+    [SerializeField]
+    private float m_lerpToTriggerTime = 1.0f;
+
+    private GameObject m_player;
+    private PlayerCameraTriggerArea m_triggerArea = null;
+    private float m_lerpAmount = 1.0f;
+    private Vector3 m_lerpPosition;
 
     private void Awake()
     {
@@ -20,12 +25,22 @@ public class PlayerCamera : MonoBehaviour
         m_player = GameMaster.GetPlayer();
 
         transform.position = GetDesiredCameraPosition();
+        m_lerpPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = GetDesiredCameraPosition();
+        Vector3 desiredPosition = GetDesiredCameraPosition();
+        Vector3 actualPosition = desiredPosition;
+
+        if(m_lerpAmount < 1.0f && m_lerpToTriggerTime > 0)
+        {
+            m_lerpAmount += (Time.deltaTime / m_lerpToTriggerTime);
+            actualPosition = Vector3.Lerp(m_lerpPosition, desiredPosition, m_lerpAmount);
+        }
+
+        transform.position = actualPosition;
     }
 
     Vector3 GetDesiredCameraPosition()
@@ -41,6 +56,7 @@ public class PlayerCamera : MonoBehaviour
         }
 
         cameraPosition = new Vector3(cameraPosition.x, cameraPosition.y, m_cameraHeight);
+
         return cameraPosition;
     }
 
@@ -48,11 +64,15 @@ public class PlayerCamera : MonoBehaviour
     public void RegisterTriggerArea(PlayerCameraTriggerArea _triggerArea)
     {
         m_triggerArea = _triggerArea;
+        m_lerpPosition = transform.position;
+        m_lerpAmount = 0.0f;
     }
 
     public void ClearTriggerArea()
     {
         m_triggerArea = null;
+        m_lerpPosition = transform.position;
+        m_lerpAmount = 0.0f;
     }
 
 }
