@@ -37,6 +37,14 @@ public class ImpactAttackAI : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == m_player)
+        {
+            OnHitPlayer();
+        }
+    }
+
     private void OnHitPlayer()
     {
         IDamageReceiver playerDamage = m_player.GetComponent<IDamageReceiver>();
