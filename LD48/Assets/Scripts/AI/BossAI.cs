@@ -68,6 +68,8 @@ public class BossAI : MonoBehaviour
     [SerializeField]
     private float m_shotgunAttackInaccuracy = 0.5f;
     [SerializeField]
+    private float m_shotgunAttackVelocityVariance = 2.0f;
+    [SerializeField]
     private int m_shotgunAttackCountMin = 5;
     [SerializeField]
     private int m_shotgunAttackCountMax = 7;
@@ -285,7 +287,7 @@ public class BossAI : MonoBehaviour
 
         if(!m_pounceComplete)
         {
-            m_movement.SetSpeed(m_pounceSpeed);
+            m_movement.SetSpeed(m_pounceSpeed * m_stage);
             m_movement.MoveToTarget(m_pounceDestination);
         }
 
@@ -352,9 +354,10 @@ public class BossAI : MonoBehaviour
             Vector2 playerDirection = m_movement.DirectionToPlayer();
             for(int i = 0; i < bulletsToFire; ++i)
             {
-                Vector2 attack = playerDirection * m_shotgunBulletSpeed;
-                attack += MathsHelper.RandomWithNegativeVector2() * m_shotgunAttackInaccuracy;
-                m_shooting.Shoot(attack, 1);
+                Vector2 attackNormal = playerDirection.PerpendicularClockwise();
+                Vector2 inaccuracy = attackNormal * MathsHelper.RandomWithNegative() * (m_shotgunAttackInaccuracy);
+                Vector2 attackVelocity = (playerDirection + inaccuracy) * (m_shotgunBulletSpeed * m_stage + m_shotgunAttackVelocityVariance * Random.value);
+                m_shooting.Shoot(attackVelocity, 1);
             }
 
         }

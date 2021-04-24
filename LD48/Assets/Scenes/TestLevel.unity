@@ -1814,6 +1814,14 @@ PrefabInstance:
       propertyPath: m_deathDrop
       value: 
       objectReference: {fileID: 3619516752318740473, guid: 6b733d7bcdd9a2f45901dc9ccb16f9ce, type: 3}
+    - target: {fileID: 186167548695494615, guid: 2c9261656e9ea2248864997b8f4fc691, type: 3}
+      propertyPath: m_shotgunAttackInaccuracy
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 186167548695494615, guid: 2c9261656e9ea2248864997b8f4fc691, type: 3}
+      propertyPath: m_shotgunAttackVelocityVariance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 186167548695494635, guid: 2c9261656e9ea2248864997b8f4fc691, type: 3}
       propertyPath: m_LocalPosition.x
       value: -91.02748
