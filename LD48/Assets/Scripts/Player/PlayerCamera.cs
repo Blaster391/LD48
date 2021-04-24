@@ -12,7 +12,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
-        GameMaster.RegisterPlayerCamerea(gameObject);
+        GameMaster.RegisterPlayerCamerea(this);
     }
 
     void Start()

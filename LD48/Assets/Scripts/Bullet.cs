@@ -41,9 +41,8 @@ public class Bullet : MonoBehaviour
             if (damageReceiver != null)
             {
                 damageReceiver.ReceiveDamage(m_damage);
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
         }
     }
 }

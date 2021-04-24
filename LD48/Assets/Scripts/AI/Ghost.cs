@@ -27,6 +27,12 @@ public class Ghost : MonoBehaviour
     {
         if(m_player != null && m_triggerableAI.Active())
         {
+            m_age += Time.deltaTime;
+            if(m_age > m_lifespan)
+            {
+                Destroy(gameObject);
+            }
+
             m_movement.MoveToPlayer();
         }
     }

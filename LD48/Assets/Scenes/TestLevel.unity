@@ -362,51 +362,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b587f13464885bb439afe26bc5b0ca27, type: 3}
---- !u!1 &1516474091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1218103938417330241, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
-  m_PrefabInstance: {fileID: 1218103939925083818}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1516474092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516474091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccf3460a8054e3499e94d23d9c6e189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_lifespan: 10
-  m_damage: 1
---- !u!114 &1516474093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516474091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: accf685c6e7c0414da5403c0fceca9ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1516474094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516474091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0dadf40e554b4547a76dee4f19108f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 1
-  m_accelerationRate: 1000
 --- !u!1001 &1589717509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -701,22 +656,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1218103938417330245, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218103938417330246, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
-      propertyPath: m_LinearDrag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218103938417330246, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218103938417330246, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
-      propertyPath: m_AngularDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218103938417330246, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
-      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

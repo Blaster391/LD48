@@ -6,7 +6,7 @@ public class GameMaster : MonoBehaviour
 {
     static GameMaster m_master = null;
     GameObject m_player = null;
-    GameObject m_playerCamera = null;
+    PlayerCamera m_playerCamera = null;
     static public GameMaster GetGameMaster()
     {
         if(m_master == null)
@@ -27,12 +27,12 @@ public class GameMaster : MonoBehaviour
         return GetGameMaster().m_player;
     }
 
-    public static void RegisterPlayerCamerea(GameObject _camera)
+    public static void RegisterPlayerCamerea(PlayerCamera _camera)
     {
         GetGameMaster().m_playerCamera = _camera;
     }
 
-    public static GameObject GetPlayerCamera()
+    public static PlayerCamera GetPlayerCamera()
     {
         return GetGameMaster().m_playerCamera;
     }

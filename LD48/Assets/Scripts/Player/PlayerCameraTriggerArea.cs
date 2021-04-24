@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerCameraTriggerArea : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject == GameMaster.GetPlayer())
+        {
+            GameMaster.GetPlayerCamera().RegisterTriggerArea(this);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject == GameMaster.GetPlayer())
+        {
+            GameMaster.GetPlayerCamera().ClearTriggerArea();
+        }
     }
 }

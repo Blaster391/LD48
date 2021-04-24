@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AITriggerSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private List<GameObject> m_spawnPoints = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> m_possibleMonsters = new List<GameObject>();
+    [SerializeField]
+    private float m_chance = 1.0f;
+    [SerializeField]
+    private bool m_triggerOnce = true;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    private bool m_triggered = false;
 
     public void NotifyPlayerEntered()
     {
