@@ -37,12 +37,19 @@ public class PowerUpSpot : MonoBehaviour
     [SerializeField]
     private GameObject m_otherSpot = null;
 
+    private bool m_done = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(m_done)
+        {
+            return;
+        }
+
         if (collision.gameObject == GameMaster.GetPlayer())
         {
             TriggerPowerup();
+            m_done = true;
         }
     }
 

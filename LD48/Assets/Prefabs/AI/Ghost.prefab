@@ -165,6 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 1.5
   m_accelerationRate: 10000
+  m_wanderSpeedMod: 0.5
+  m_wanderWhenInactive: 1
+  m_wanderAlways: 0
 --- !u!114 &-6724236529078814446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +196,4 @@ MonoBehaviour:
   m_fadeInOnSpawn: 0
   m_timeToFade: 1
   m_manageExternally: 1
+  m_dieOnFade: 0

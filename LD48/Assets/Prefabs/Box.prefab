@@ -125,6 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_baseHealth: 1
   m_currentHealth: 1
+  m_drop: {fileID: 1123780273983533929, guid: 030c2cac935b4db43ac9293144246427, type: 3}
+  m_dropChance: 0.2
 --- !u!114 &6594483173631363975
 MonoBehaviour:
   m_ObjectHideFlags: 0

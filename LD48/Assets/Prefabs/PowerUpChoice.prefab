@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7190892227602253280}
   - component: {fileID: 7190892227602253281}
   - component: {fileID: 7190892227602253286}
+  - component: {fileID: 508373389}
   m_Layer: 0
   m_Name: AngelSpot
   m_TagString: Untagged
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_fadeInOnSpawn: 0
   m_timeToFade: 1
   m_manageExternally: 0
-  m_dieOnFade: 0
+  m_dieOnFade: 1
 --- !u!58 &7190892227602253286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -148,6 +149,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.56
+--- !u!114 &508373389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190892227602253282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37afa93aaf6c0e41aa1943464ea69d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_goodPowerups: 0000000001000000
+  m_badPowerups: 0600000007000000
+  m_successChance: 1
+  m_successSprite: {fileID: 21300000, guid: afac37ade4fc5994691d214a9c908038, type: 3}
+  m_failSprite: {fileID: 21300000, guid: 1ee3ba9ba00e1144dbc13f2a7b1de9ac, type: 3}
+  m_otherSpot: {fileID: 7190892227960864427}
 --- !u!1 &7190892227960864427
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +179,7 @@ GameObject:
   - component: {fileID: 7190892227960864425}
   - component: {fileID: 7190892227960864431}
   - component: {fileID: 7190892227960864430}
+  - component: {fileID: 867029698}
   m_Layer: 0
   m_Name: DevilSpot
   m_TagString: Untagged
@@ -247,7 +267,7 @@ MonoBehaviour:
   m_fadeInOnSpawn: 0
   m_timeToFade: 1
   m_manageExternally: 0
-  m_dieOnFade: 0
+  m_dieOnFade: 1
 --- !u!58 &7190892227960864430
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -264,3 +284,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.56
+--- !u!114 &867029698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190892227960864427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37afa93aaf6c0e41aa1943464ea69d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_goodPowerups: 02000000030000000400000005000000
+  m_badPowerups: 08000000090000000a000000
+  m_successChance: 1
+  m_successSprite: {fileID: 21300000, guid: ab996ba24d5b33b42a5cf22f944f8dfb, type: 3}
+  m_failSprite: {fileID: 21300000, guid: 10f89725fe0ff404f8c844e40b18175f, type: 3}
+  m_otherSpot: {fileID: 7190892227602253282}

@@ -25,6 +25,7 @@ public class PlayerEndGame : MonoBehaviour
     private Vector3 m_startPosition;
     private Color m_skyboxStartColour;
     private Camera m_camera;
+    private Rigidbody2D m_rigidBody;
 
     public bool IsGameFinished()
     {
@@ -36,12 +37,18 @@ public class PlayerEndGame : MonoBehaviour
         m_finished = true;
         m_startPosition = GameMaster.GetPlayer().transform.position;
         m_skyboxStartColour = m_camera.backgroundColor;
+
+        if (m_rigidBody != null)
+        {
+            m_rigidBody.velocity = Vector2.zero;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
         m_camera = GameMaster.GetPlayerCamera().gameObject.GetComponent<Camera>();
+        m_rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

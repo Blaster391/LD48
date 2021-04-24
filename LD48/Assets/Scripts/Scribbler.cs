@@ -18,6 +18,7 @@ public class Scribbler : MonoBehaviour
     private float m_scribbleTime = 0.0f;
     private int m_scribbledIndex = 0;
     private Collider2D m_collider = null;
+    private Rigidbody2D m_rigidBody = null;
 
     public void BeginScribble()
     {
@@ -25,6 +26,11 @@ public class Scribbler : MonoBehaviour
         if(m_collider != null)
         {
             m_collider.enabled = false;
+        }
+
+        if(m_rigidBody != null)
+        {
+            m_rigidBody.velocity = Vector2.zero;
         }
     }
 
@@ -36,6 +42,7 @@ public class Scribbler : MonoBehaviour
     private void Start()
     {
         m_collider = GetComponent<Collider2D>();
+        m_rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()

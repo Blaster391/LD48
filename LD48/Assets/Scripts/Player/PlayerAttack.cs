@@ -103,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
         Vector2 attackDirection = GetAttackDirection();
         for(int i = 0; i < m_currentAttackCount; ++i)
         {
-            attackDirection += MathsHelper.RandomWithNegativeVector2() * (m_currentInaccuracy * i+1);
+            attackDirection += MathsHelper.RandomWithNegativeVector2() * (m_currentInaccuracy * (i+1));
             Vector2 attackVelocity = attackDirection * m_currentProjectileSpeed + m_movement.CurrentVelocity() * m_velocityMod;
             m_shoot.Shoot(attackVelocity, m_currentAttackDamage);
         }

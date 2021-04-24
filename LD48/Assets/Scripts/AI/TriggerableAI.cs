@@ -37,4 +37,9 @@ public class TriggerableAI : MonoBehaviour
             m_triggerArea = triggerArea;
         }
     }
+
+    public AITriggerArea GetTriggerArea()
+    {
+        return m_triggerArea;
+    }
 }
