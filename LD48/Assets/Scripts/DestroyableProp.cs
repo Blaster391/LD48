@@ -9,9 +9,13 @@ public class DestroyableProp : IDamageReceiver
     [SerializeField]
     private int m_currentHealth = 1;
 
+    private Scribbler m_scribbler = null;
+
     private void Start()
     {
         m_currentHealth = m_baseHealth;
+
+        m_scribbler = GetComponent<Scribbler>();
     }
 
     public override void ReceiveDamage(int _damage)
@@ -19,7 +23,16 @@ public class DestroyableProp : IDamageReceiver
         m_currentHealth -= _damage;
         if(m_currentHealth <= 0)
         {
-            Destroy(gameObject);
+            if (m_scribbler != null)
+            {
+                m_scribbler.BeginScribble();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
+
+
 }

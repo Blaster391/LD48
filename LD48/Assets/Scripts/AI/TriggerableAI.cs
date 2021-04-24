@@ -13,6 +13,12 @@ public class TriggerableAI : MonoBehaviour
             return false;
         }
 
+        PlayerHealth playerHealth = GameMaster.GetPlayer()?.GetComponent<PlayerHealth>();
+        if(playerHealth != null && playerHealth.IsDead())
+        {
+            return false;
+        }
+
         return (m_triggerArea == null || m_triggerArea.Active());
     }
 

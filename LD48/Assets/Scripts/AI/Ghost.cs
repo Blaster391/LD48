@@ -12,11 +12,13 @@ public class Ghost : MonoBehaviour
 
     private GameObject m_player;
     private TriggerableAI m_triggerableAI;
+    private Fader m_fader;
 
     void Start()
     {
         m_player = GameMaster.GetPlayer();
         m_triggerableAI = GetComponent<TriggerableAI>();
+        m_fader = GetComponent<Fader>();
     }
 
     void Update()
@@ -24,7 +26,10 @@ public class Ghost : MonoBehaviour
         if(m_player != null && m_triggerableAI.Active())
         {
             m_age += Time.deltaTime;
-            if(m_age > m_lifespan)
+
+            m_fader.SetFade(m_age / m_lifespan);
+
+            if (m_age > m_lifespan)
             {
                 Destroy(gameObject);
             }

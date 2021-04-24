@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField]
+    private float m_velocityMod = 1.0f;
+
+    [SerializeField]
     private float m_baseInaccuracy = 0.01f;
     [SerializeField]
     private float m_baseAttackSpeed = 1.0f;
@@ -62,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Vector2 attackDirection = GetAttackDirection();
         attackDirection += MathsHelper.RandomWithNegativeVector2() * m_currentInaccuracy;
-        Vector2 attackVelocity = attackDirection * m_currentProjectileSpeed + m_movement.CurrentVelocity();
+        Vector2 attackVelocity = attackDirection * m_currentProjectileSpeed + m_movement.CurrentVelocity() * m_velocityMod;
         m_shoot.Shoot(attackVelocity, m_currentAttackDamage);
 
     }

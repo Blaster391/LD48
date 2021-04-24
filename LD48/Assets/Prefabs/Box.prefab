@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8911998281556046412}
   - component: {fileID: -6467156343466694595}
   - component: {fileID: 8742490398381992581}
+  - component: {fileID: 6594483173631363975}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -122,3 +123,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a12afd8a94a28c4792b557d6ad2d23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_baseHealth: 1
+  m_currentHealth: 1
+--- !u!114 &6594483173631363975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965641080266765716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29245a0a2a12b134abac00d40346cd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scribbles:
+  - {fileID: 742175851331583581, guid: 6f08eb691fa6fc04e99189ce823ca902, type: 3}
+  - {fileID: 5264813933215064748, guid: bd05cd1ea68afc6418c649e9cee31921, type: 3}
+  - {fileID: 259797451299667846, guid: 20d91474f697916489681151a7673d35, type: 3}
+  - {fileID: 955004577593888086, guid: 65f164569dd3c134b8d4dd6c783a746a, type: 3}
+  m_timeToScribble: 0.5
+  m_destroyOnCompletion: 1
