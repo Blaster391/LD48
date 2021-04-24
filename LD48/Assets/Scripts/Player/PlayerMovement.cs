@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D m_rigidBody;
     private PlayerControls m_controls;
+    private Vector2 m_lastMovementDirection = Vector2.down;
 
     [SerializeField]
     private float m_currentMovementSpeed;
@@ -33,14 +34,24 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector2 movementDirection = DesiredMovementDirection();
-        m_rigidBody.AddForce(movementDirection * m_accelerationRate * m_currentMovementSpeed * Time.deltaTime);
-
-        if(m_rigidBody.velocity.magnitude > m_currentMovementSpeed)
+        if(movementDirection != Vector2.zero)
         {
-            Vector2 velocity = m_rigidBody.velocity;
-            velocity.Normalize();
-            m_rigidBody.velocity = velocity * m_currentMovementSpeed;
+            m_lastMovementDirection = movementDirection;
+
+            m_rigidBody.AddForce(movementDirection * m_accelerationRate * m_currentMovementSpeed * Time.deltaTime);
+
+            if (m_rigidBody.velocity.magnitude > m_currentMovementSpeed)
+            {
+                Vector2 velocity = m_rigidBody.velocity;
+                velocity.Normalize();
+                m_rigidBody.velocity = velocity * m_currentMovementSpeed;
+            }
         }
+    }
+
+    public Vector2 CurrentVelocity()
+    {
+        return m_rigidBody.velocity;
     }
 
     public Vector2 DesiredMovementDirection()
@@ -73,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return movement;
+    }
+
+    public Vector2 LastMovementDirection()
+    {
+        return m_lastMovementDirection;
     }
 
 }

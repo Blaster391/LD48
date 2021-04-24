@@ -6,8 +6,30 @@ public class PlayerControls : MonoBehaviour
 {
     public bool AttackPressed()
     {
-        return Input.GetKey(KeyCode.Space);
+        return AttackUpPressed() || AttackDownPressed() || AttackLeftPressed() || AttackRightPressed();
     }
+
+    public bool AttackUpPressed()
+    {
+        return Input.GetKey(KeyCode.UpArrow);
+    }
+
+    public bool AttackDownPressed()
+    {
+        return Input.GetKey(KeyCode.DownArrow);
+    }
+
+    public bool AttackLeftPressed()
+    {
+        return Input.GetKey(KeyCode.LeftArrow);
+    }
+
+    public bool AttackRightPressed()
+    {
+        return Input.GetKey(KeyCode.RightArrow);
+    }
+
+
     public bool UpPressed()
     {
         return Input.GetKey(KeyCode.W);
