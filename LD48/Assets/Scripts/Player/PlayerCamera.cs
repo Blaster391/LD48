@@ -20,6 +20,9 @@ public class PlayerCamera : MonoBehaviour
     private float m_lerpAmount = 1.0f;
     private Vector3 m_lerpPosition;
     private bool m_shaking = false;
+    private Vector3 m_shakePositionOffset = Vector3.zero;
+    private Vector3 m_lastShakePositionOffset = Vector3.zero;
+    private float m_shakeTime = 0.0f;
 
     private void Awake()
     {
@@ -45,6 +48,21 @@ public class PlayerCamera : MonoBehaviour
             m_lerpAmount += (Time.deltaTime / m_lerpToTriggerTime);
             actualPosition = Vector3.Lerp(m_lerpPosition, desiredPosition, m_lerpAmount);
         }
+
+        if(m_shaking)
+        {
+            m_shakeTime += Time.deltaTime;
+            if (m_shakeTime > m_shakeLerp)
+            {
+                m_lastShakePositionOffset = m_shakePositionOffset;
+
+                m_shakeTime = 0.0f;
+                m_shakePositionOffset = MathsHelper.RandomWithNegativeVector2() * m_shakeDistance;
+            }
+
+            actualPosition += Vector3.Lerp(m_lastShakePositionOffset, m_shakePositionOffset, m_shakeTime / m_shakeLerp);
+        }
+
 
         transform.position = actualPosition;
     }
@@ -84,6 +102,10 @@ public class PlayerCamera : MonoBehaviour
 
     public void SetCameraShake(bool _shake)
     {
-        m_shaking = _shake;
+        if(m_shaking != _shake)
+        {
+            m_shaking = _shake;
+            m_shakeTime = 0.0f;
+        }
     }
 }

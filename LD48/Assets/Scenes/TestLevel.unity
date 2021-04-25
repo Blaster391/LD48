@@ -5032,6 +5032,10 @@ PrefabInstance:
       propertyPath: m_ghostAudio.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 68a747a441841ef48b98532a658e79ea, type: 3}
+    - target: {fileID: 6434632411638111874, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_shakeDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6434632411638111875, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
