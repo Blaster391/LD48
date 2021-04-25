@@ -93,7 +93,6 @@ public class BossAI : MonoBehaviour
     [SerializeField]
     private GameObject m_deathDrop = null;
 
-    private SpriteRenderer m_renderer;
     private TriggerableAI m_triggerableAI;
     private AIDamage m_health = null;
     private AIMovementHelper m_movement = null;
@@ -137,7 +136,6 @@ public class BossAI : MonoBehaviour
     void Start()
     {
         m_audio = GetComponent<AudioCharacterBoss>();
-        m_renderer = GetComponent<SpriteRenderer>();
         m_triggerableAI = GetComponent<TriggerableAI>();
         m_health = GetComponent<AIDamage>();
         m_movement = GetComponent<AIMovementHelper>();
@@ -278,7 +276,7 @@ public class BossAI : MonoBehaviour
     {
         if(m_timeInState == 0)
         {
-            m_randomisedTotalTimeInState = Random.Range(m_minimumRestTime, m_maximumRestTime);
+            m_randomisedTotalTimeInState = Random.Range(m_minimumRestTime, m_maximumRestTime) / m_stage;
         }
 
         if(m_timeInState > m_randomisedTotalTimeInState)
@@ -299,7 +297,7 @@ public class BossAI : MonoBehaviour
         }
 
 
-        if (m_timeInState > m_pounceChargeTime)
+        if (m_timeInState > m_pounceChargeTime / m_stage)
         {
             ChangeState(BossState.Pouncing);
         }
@@ -432,11 +430,9 @@ public class BossAI : MonoBehaviour
         m_camera.SetCameraShake(true);
 
         m_triggerableAI.GetTriggerArea().GetComponent<AITriggerSpawner>().KillAllAI();
-  
+
         float fadeLerp = 1.0f - (m_timeInState / m_deathDuration);
-        Color bossColour = m_renderer.color;
-        bossColour.a = fadeLerp;
-        m_renderer.color = bossColour;
+        m_visuals.Fade(fadeLerp);
 
         if (m_timeInState > m_deathDuration)
         {

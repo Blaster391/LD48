@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3707028978984415212}
   m_Layer: 0
-  m_Name: ATKUP
+  m_Name: DMGUP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 83b5d79d61ae74146a09032ee7facdd4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 004e1857834933f48b922f8ca3c4af18, type: 3}
   m_Color: {r: 0.08220875, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

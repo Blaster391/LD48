@@ -88,8 +88,12 @@ public class PlayerHealth : IDamageReceiver
 
         if(m_scribbler.ScribblingComplete())
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
             m_gameOverScreen.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(1, LoadSceneMode.Single);
+            }
         }
     }
 

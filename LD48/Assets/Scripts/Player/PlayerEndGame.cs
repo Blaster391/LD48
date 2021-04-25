@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerEndGame : MonoBehaviour
@@ -85,6 +86,15 @@ public class PlayerEndGame : MonoBehaviour
                 if(whiteoutLerp > 1.5f)
                 {
                     m_gameEndScreen.SetActive(true);
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        SceneManager.LoadScene(1, LoadSceneMode.Single);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        Application.Quit();
+                    }
                 }
             }
         }

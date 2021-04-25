@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         GameMaster.RegisterAudioManager(this);
-        StartBGMPhase(0);
+        StartBGMPhase(1);
     }
 
     // Update is called once per frame

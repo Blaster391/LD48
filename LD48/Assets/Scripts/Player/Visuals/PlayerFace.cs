@@ -20,11 +20,13 @@ public class PlayerFace : MonoBehaviour
     private int m_index = 0;
     private PlayerHealth m_health = null;
     private SpriteRenderer m_renderer = null;
+    private PlayerEndGame m_endGame = null;
 
     void Start()
     {
         m_lastUpdateTime = Random.value;
         m_health = GameMaster.GetPlayer().GetComponent<PlayerHealth>();
+        m_endGame = GameMaster.GetPlayer().GetComponent<PlayerEndGame>();
         m_renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -45,7 +47,7 @@ public class PlayerFace : MonoBehaviour
             }
 
             float healthPercentage = (float)m_health.GetCurrentHealth() / m_health.GetMaxHealth();
-            if (healthPercentage > 0.75f)
+            if (healthPercentage > 0.75f || m_endGame.IsGameFinished())
             {
                 m_renderer.sprite = m_happyFaces[m_index % m_happyFaces.Count];
             }

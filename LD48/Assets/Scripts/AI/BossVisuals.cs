@@ -58,6 +58,17 @@ public class BossVisuals : MonoBehaviour
         m_face.color = m_stage3ColourFace;
     }
 
+    public void Fade(float _alpha)
+    {
+        Color bodyColor = m_body.color;
+        bodyColor.a = _alpha;
+        m_body.color = bodyColor;
+
+        Color faceColor = m_face.color;
+        faceColor.a = _alpha;
+        m_face.color = faceColor;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -14,7 +14,7 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetKey(KeyCode.Escape))
         {
             m_quitTimer += Time.deltaTime;
-            if(m_quitTimer > 1.0f)
+            if(m_quitTimer > 1.0f || GetComponent<PlayerEndGame>().IsGameFinished())
             {
                 Application.Quit();
             }
