@@ -2556,6 +2556,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 544078657, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6172851d1c1b5e46bf957cbec6df56f, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bgmTracks.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bgmTracks.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c6172851d1c1b5e46bf957cbec6df56f, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bgmTracks.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 915d2826f374c0f4182fa993f0b9a103, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bgmTracks.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 02122d4ef47388048aca167b2fb5a230, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bgmTracks.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 55378c3118769c542b821140479844ef, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bgmTracks.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 72da97f08d40dfe4a8e0eac96e8df0e5, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bossBuildupMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 5214f1c25902c8a45ba4776b69139673, type: 3}
+    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_bossMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: fd2e8b98c004bad4282a76abffc96716, type: 3}
     - target: {fileID: 6434632411638111875, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
