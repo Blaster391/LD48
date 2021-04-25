@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ea72d200512ea44b77f235cd62be26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lifetime: 10
+  m_lifetime: 5
 --- !u!114 &1610539554399935668
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField]
-    private float m_lifetime = 30.0f;
+    private float m_lifetime = 5.0f;
     private float m_age = 0.0f;
 
     private Rigidbody2D m_rigidbody;
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         m_age += Time.deltaTime;
         if(m_age > m_lifetime)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

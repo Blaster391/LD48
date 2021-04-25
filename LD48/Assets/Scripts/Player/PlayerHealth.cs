@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : IDamageReceiver
@@ -105,6 +106,11 @@ public class PlayerHealth : IDamageReceiver
             m_currentHealth = m_maxHealth;
             if(m_maxHealth == 0)
             {
+                Analytics.CustomEvent("gameOver", new Dictionary<string, object>
+                {
+                    { "stage", GameMaster.GetAudioManager().GetStage() }
+                });
+
                 m_scribbler.BeginScribble();
             }
         }

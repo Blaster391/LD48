@@ -58,6 +58,11 @@ public class AudioManager : MonoBehaviour
         StartBGMPhase(1);
     }
 
+    public int GetStage()
+    {
+        return m_currentBGMPhase;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -155,6 +160,8 @@ public class AudioManager : MonoBehaviour
 
     public void StartBossMusic()
     {
+        m_currentBGMPhase = 6;
+
         StopBGM();
 
         m_bossWarmupFade = false;

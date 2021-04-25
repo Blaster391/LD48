@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -38,6 +39,11 @@ public class PlayerEndGame : MonoBehaviour
 
     public void CompleteGame()
     {
+        Analytics.CustomEvent("completed", new Dictionary<string, object>
+                {
+                    { "time", Time.realtimeSinceStartup }
+                });
+
         m_finished = true;
         m_startPosition = GameMaster.GetPlayer().transform.position;
         m_skyboxStartColour = m_camera.backgroundColor;
