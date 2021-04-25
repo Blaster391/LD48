@@ -98,7 +98,13 @@ public class PlayerPowerups : MonoBehaviour
 
         if(textToCreate != null)
         {
-            Instantiate<GameObject>(textToCreate, m_powerUpTextPos.transform.position, Quaternion.identity, m_powerUpTextPos.transform);
+            GameObject text =Instantiate<GameObject>(textToCreate, m_powerUpTextPos.transform.position, Quaternion.identity, m_powerUpTextPos.transform);
+
+            Fader[] faders = text.GetComponentsInChildren<Fader>();
+            foreach(var f in faders)
+            {
+                f.StartFade();
+            }
         }
     }
 }
