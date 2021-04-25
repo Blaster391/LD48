@@ -97,4 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_flickerSprites:
   - {fileID: 21300000, guid: 1ba0e1b778c17c74baadacd0b098998c, type: 3}
-  - {fileID: 21300000, guid: 1ba0e1b778c17c74baadacd0b098998c, type: 3}
+  - {fileID: 21300000, guid: c1853658870c1f34fb77898496b7292d, type: 3}

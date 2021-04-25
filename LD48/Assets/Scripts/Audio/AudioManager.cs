@@ -68,15 +68,15 @@ public class AudioManager : MonoBehaviour
             m_fadeOutLerp += changeDelta;
             m_fadeOutLerp = Mathf.Clamp01(m_fadeOutLerp);
 
-            m_bgmSource1.volume = (1.0f - m_fadeOutLerp);
-            m_bgmSource2.volume = (1.0f - m_fadeOutLerp);
+            m_bgmSource1.volume = (1.0f - m_fadeOutLerp) * m_bgmVolume;
+            m_bgmSource2.volume = (1.0f - m_fadeOutLerp) * m_bgmVolume;
 
             if (m_fadeOutLerp >= 1.0f)
             {
                 PlayOnActiveBGMTrack(m_bossBuildupMusic, true);
 
-                m_bgmSource1.volume = (1.0f);
-                m_bgmSource2.volume = (1.0f);
+                m_bgmSource1.volume = m_bgmVolume;
+                m_bgmSource2.volume = m_bgmVolume;
 
                 m_bossWarmupFade = false;
             }
@@ -100,8 +100,8 @@ public class AudioManager : MonoBehaviour
             m_source2Lerp += (m_source2Active ? changeDelta : -changeDelta);
             m_source2Lerp = Mathf.Clamp01(m_source2Lerp);
 
-            m_bgmSource1.volume = (1.0f - m_source2Lerp);
-            m_bgmSource2.volume = (m_source2Lerp);
+            m_bgmSource1.volume = (1.0f - m_source2Lerp) * m_bgmVolume;
+            m_bgmSource2.volume = (m_source2Lerp) * m_bgmVolume;
         }
     }
 
@@ -111,6 +111,7 @@ public class AudioManager : MonoBehaviour
         {
             m_ghostSound = CreateAndPlayAudioObject(m_ghostAudio[Random.Range(0, m_ghostAudio.Count)]);
             m_ghostSound.GetComponent<AudioSource>().panStereo = (Random.value > 0.5) ? -1.0f : 1.0f;
+            m_ghostSound.GetComponent<AudioSource>().volume = 0.5f;
         }
     }
 
