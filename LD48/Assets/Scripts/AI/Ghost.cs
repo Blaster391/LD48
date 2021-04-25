@@ -19,6 +19,8 @@ public class Ghost : MonoBehaviour
         m_player = GameMaster.GetPlayer();
         m_triggerableAI = GetComponent<TriggerableAI>();
         m_fader = GetComponent<Fader>();
+
+        GameMaster.GetAudioManager().TriggerGhostSound();
     }
 
     void Update()

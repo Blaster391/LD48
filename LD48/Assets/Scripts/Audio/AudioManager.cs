@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour
     private List<AudioClip> m_bgmTracks;
 
     [SerializeField]
+    private List<AudioClip> m_ghostAudio;
+
+    [SerializeField]
     AudioClip m_bossBuildupMusic;
 
     [SerializeField]
@@ -45,6 +48,7 @@ public class AudioManager : MonoBehaviour
     private float m_source2Lerp = 0.0f;
     private int m_currentBGMPhase = -1;
     private bool m_bossWarmupFade = false;
+    private GameObject m_ghostSound = null;
 
     private float m_fadeOutLerp = 0.0f;
 
@@ -101,6 +105,15 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void TriggerGhostSound()
+    {
+        if(m_ghostSound == null)
+        {
+            m_ghostSound = CreateAndPlayAudioObject(m_ghostAudio[Random.Range(0, m_ghostAudio.Count)]);
+            m_ghostSound.GetComponent<AudioSource>().panStereo = (Random.value > 0.5) ? -1.0f : 1.0f;
+        }
+    }
+
     public GameObject CreateAndPlayAudioObject(AudioClip _clip)
     {
         GameObject audioObject = Instantiate<GameObject>(m_audioObject, transform.position, Quaternion.identity, transform);
@@ -141,7 +154,12 @@ public class AudioManager : MonoBehaviour
 
     public void StartBossMusic()
     {
+        StopBGM();
+
         m_bossWarmupFade = false;
+        m_source2Active = !m_source2Active;
+        m_changing = true;
+
         PlayOnActiveBGMTrack(m_bossMusic);
     }
 

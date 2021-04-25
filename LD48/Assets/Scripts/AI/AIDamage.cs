@@ -9,14 +9,26 @@ public class AIDamage : IDamageReceiver
 
     private Scribbler m_scribbler;
     private BossAI m_bossAI;
+
+    private AudioCharacterBoss m_bossAudio;
+    private AudioCharacterEnemy m_enemyAudio;
+
     private void Start()
     {
         m_scribbler = GetComponent<Scribbler>();
         m_bossAI = GetComponent<BossAI>();
+
+        m_bossAudio = GetComponent<AudioCharacterBoss>();
+        m_enemyAudio = GetComponent<AudioCharacterEnemy>();
     }
 
     public override void ReceiveDamage(int _damage)
     {
+        if(m_enemyAudio != null)
+        {
+            m_enemyAudio.TriggerEnemyDamaged();
+        }
+
         m_health -= _damage;
         if(IsDead())
         {
@@ -35,6 +47,10 @@ public class AIDamage : IDamageReceiver
 
                 Destroy(gameObject);
             }
+        }
+        else if(m_bossAudio != null)
+        {
+            m_bossAudio.TriggerDamaged();
         }
     }
 

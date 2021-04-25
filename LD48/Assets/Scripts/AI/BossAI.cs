@@ -33,14 +33,18 @@ public class BossAI : MonoBehaviour
     private float m_minimumRestTime = 5.0f;
     [SerializeField]
     private float m_maximumRestTime = 10.0f;
+
     [SerializeField]
     private float m_roarTime = 2.0f;
+
     [SerializeField]
     private float m_pounceChargeTime = 2.0f;
     [SerializeField]
     private float m_pounceSpeed = 10.0f;
     [SerializeField]
     private float m_pounceTime = 2.0f;
+    [SerializeField]
+    private float m_pounceOvershoot = 5.0f;
 
     [SerializeField]
     private float m_spinAttackRotationSpeed = 1.0f;
@@ -101,6 +105,7 @@ public class BossAI : MonoBehaviour
     private Vector2 m_pounceDestination;
     private GameObject m_player;
     private PlayerCamera m_camera;
+    private AudioCharacterBoss m_audio;
 
     private bool m_stateChanged = false;
     private float m_timeInState = 0.0f;
@@ -113,6 +118,7 @@ public class BossAI : MonoBehaviour
         if(m_state != BossState.Dying)
         {
             GetComponent<Collider2D>().enabled = false;
+            m_audio.TriggerDeathRoar();
             GameMaster.GetAudioManager().PlayBossKilled();
             ChangeState(BossState.Dying);
         }
@@ -120,6 +126,7 @@ public class BossAI : MonoBehaviour
 
     void Start()
     {
+        m_audio = GetComponent<AudioCharacterBoss>();
         m_renderer = GetComponent<SpriteRenderer>();
         m_triggerableAI = GetComponent<TriggerableAI>();
         m_health = GetComponent<AIDamage>();
@@ -237,6 +244,11 @@ public class BossAI : MonoBehaviour
 
     private void RoarState()
     {
+        if(m_timeInState == 0.0f)
+        {
+            m_audio.TriggerRoar();
+        }
+
         m_camera.SetCameraShake(true);
 
         if (m_timeInState > m_roarTime * 0.5f && m_stage == 3)
@@ -270,8 +282,11 @@ public class BossAI : MonoBehaviour
 
         if (m_timeInState == 0.0f)
         {
-            m_pounceDestination = m_movement.PlayerPosition();
+            m_pounceDestination = m_movement.PlayerPosition() + m_movement.DirectionToPlayer() * m_pounceOvershoot;
+
+            m_audio.TriggerPounceCharge();
         }
+
 
         if (m_timeInState > m_pounceChargeTime)
         {
@@ -287,7 +302,12 @@ public class BossAI : MonoBehaviour
             m_pounceComplete = true;
         }
 
-        if(!m_pounceComplete)
+        if (m_timeInState == 0.0f)
+        {
+            m_audio.TriggerPounce();
+        }
+
+        if (!m_pounceComplete)
         {
             m_movement.SetSpeed(m_pounceSpeed * m_stage);
             m_movement.MoveToTarget(m_pounceDestination);
@@ -301,6 +321,11 @@ public class BossAI : MonoBehaviour
 
     private void SpinAttackState()
     {
+        if (m_timeInState == 0.0f)
+        {
+            m_audio.TriggerSpin();
+        }
+
         Vector2 targetPosition = m_triggerableAI.GetTriggerArea().transform.position;
         Vector2 myPosition = transform.position;
         if ((myPosition - targetPosition).magnitude > 1.0f)
@@ -351,6 +376,8 @@ public class BossAI : MonoBehaviour
 
         if (m_timeSinceLastShot > attackRate)
         {
+            m_audio.TriggerShotgun();
+
             m_timeSinceLastShot = 0.0f;
             int bulletsToFire = Random.Range(m_shotgunAttackCountMin, m_shotgunAttackCountMax);
             Vector2 playerDirection = m_movement.DirectionToPlayer();

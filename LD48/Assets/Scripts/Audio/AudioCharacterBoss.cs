@@ -40,6 +40,10 @@ public class AudioCharacterBoss : AudioCharacter
         PlayFromList(m_shotgun, 2);
     }
 
+    public void TriggerSpin()
+    {
+        PlayFromList(m_spinning, 2);
+    }
 
     public void TriggerRoar()
     {

@@ -39,7 +39,7 @@ public class ShootingAI : MonoBehaviour
     private ShootingHelper m_shooting;
     private Rigidbody2D m_rigidbody;
     private float m_attackCooldown = 0.0f;
-
+    private AudioCharacterEnemy m_enemyAudio;
     void Start()
     {
         m_player = GameMaster.GetPlayer();
@@ -47,6 +47,7 @@ public class ShootingAI : MonoBehaviour
         m_movement = GetComponent<AIMovementHelper>();
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_shooting = GetComponent<ShootingHelper>();
+        m_enemyAudio = GetComponent<AudioCharacterEnemy>();
 
         m_combatRange = Random.Range(m_combatRangeMin, m_combatRangeMax);
         if (m_attackSpeed > 0)
@@ -86,7 +87,9 @@ public class ShootingAI : MonoBehaviour
 
     void Attack()
     {
-        if(m_aimAtPlayer)
+        m_enemyAudio.TriggerEnemyAttack();
+
+        if (m_aimAtPlayer)
         {
             Vector2 aimPosition = m_movement.PlayerPosition();
             Vector2 aimDirection =  aimPosition - new Vector2(transform.position.x, transform.position.y);

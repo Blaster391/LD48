@@ -123,10 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a12afd8a94a28c4792b557d6ad2d23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitFX: {fileID: 8300000, guid: 982aa7c14267aaf458eb3f76609a432c, type: 3}
+  m_hitFX: {fileID: 8300000, guid: 7621ae08090536b4293e74505269faa2, type: 3}
   m_baseHealth: 1
   m_currentHealth: 1
-  m_drop: {fileID: 1123780273983533929, guid: 030c2cac935b4db43ac9293144246427, type: 3}
+  m_drops:
+  - {fileID: 1123780273983533929, guid: 030c2cac935b4db43ac9293144246427, type: 3}
+  - {fileID: 1123780273983533929, guid: 030c2cac935b4db43ac9293144246427, type: 3}
+  - {fileID: 1218103938417330241, guid: 2d302593f59f412418e2ee7c29810dc1, type: 3}
   m_dropChance: 0.2
 --- !u!114 &6594483173631363975
 MonoBehaviour:

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 186167548695494612}
   - component: {fileID: 186167548695494613}
   - component: {fileID: 885157723}
+  - component: {fileID: 1163682450}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_pounceChargeTime: 2
   m_pounceSpeed: 20
   m_pounceTime: 2
+  m_pounceOvershoot: 5
   m_spinAttackRotationSpeed: 15
   m_spinAttackMovementSpeed: 10
   m_spinAttackStageRotationSpeedMod: 1.5
@@ -228,3 +230,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bulletPrefab: {fileID: 6353848712235746294, guid: 85bd766ec72c19f439ca362700931407, type: 3}
   m_isEnemy: 1
+--- !u!114 &1163682450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186167548695494639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1654d819c4fe1864eb32466638a03659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pounceCharging:
+  - {fileID: 8300000, guid: 21f1a983e6dd7e942adae73555cf6a97, type: 3}
+  m_pouncing:
+  - {fileID: 8300000, guid: e7e1d5b2943ac0a4697bd12a8aadd3a1, type: 3}
+  - {fileID: 8300000, guid: 74ef29456604a74478373ab8ec97b27c, type: 3}
+  m_spinning:
+  - {fileID: 8300000, guid: 9368984d02b8a5444b5555601bada562, type: 3}
+  m_shotgun:
+  - {fileID: 8300000, guid: d53cfcaa71e19ba4784b8c1ec88b1811, type: 3}
+  - {fileID: 8300000, guid: d17d989fef51b434e973d3d3cc4db053, type: 3}
+  - {fileID: 8300000, guid: 7a6773daa27c1f0478e40c0582be8952, type: 3}
+  - {fileID: 8300000, guid: 2bea7e5de00fed54fbcdc5a0e59303de, type: 3}
+  m_roar:
+  - {fileID: 8300000, guid: 375f348f3e493a2458e4a8337e2a6325, type: 3}
+  - {fileID: 8300000, guid: 30a26b90bc726ee4b87fe4fd33cac0d9, type: 3}
+  m_damaged: []
+  m_deathRoar: {fileID: 8300000, guid: 8036d869ea4652c4db15f3952fcb24db, type: 3}

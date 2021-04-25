@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1516474094}
   - component: {fileID: -6724236529078814446}
   - component: {fileID: -3997136024057680032}
+  - component: {fileID: 7453173864398548661}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -197,3 +198,23 @@ MonoBehaviour:
   m_timeToFade: 1
   m_manageExternally: 1
   m_dieOnFade: 0
+--- !u!114 &7453173864398548661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218103938417330241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e00a99517ff254b91f03290f335cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyAttackClips:
+  - {fileID: 8300000, guid: 9a5643ce39faf704c8be8de030240044, type: 3}
+  - {fileID: 8300000, guid: 1d7b2296ee025b242942a5e0cbee93e3, type: 3}
+  m_enemyDamaged:
+  - {fileID: 8300000, guid: 9be09d2bd905b8b40aab0a39b2655c23, type: 3}
+  - {fileID: 8300000, guid: a4a7ffe992132ab409ca495f31c39cf0, type: 3}
+  - {fileID: 8300000, guid: badc4ad482070e84a8179aa602accefc, type: 3}
+  - {fileID: 8300000, guid: e8112656f46596340ba8138e675c778d, type: 3}

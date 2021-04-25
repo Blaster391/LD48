@@ -13,7 +13,7 @@ public class DestroyableProp : IDamageReceiver
     private int m_currentHealth = 1;
 
     [SerializeField]
-    private GameObject m_drop = null;
+    private List<GameObject> m_drops = new List<GameObject>();
     [SerializeField]
     private float m_dropChance = 0.0f;
 
@@ -31,11 +31,11 @@ public class DestroyableProp : IDamageReceiver
         m_currentHealth -= _damage;
         if(m_currentHealth <= 0)
         {
-            if(m_drop != null)
+            if(m_drops.Count > 0)
             {
                 if(m_dropChance >= Random.value)
                 {
-                    Instantiate<GameObject>(m_drop, transform.position, Quaternion.identity);
+                    Instantiate<GameObject>(m_drops[Random.Range(0, m_drops.Count)], transform.position, Quaternion.identity);
                 }
             }
 

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4560400538089177796}
   - component: {fileID: 4560400538089177797}
   - component: {fileID: 4159840826349617152}
+  - component: {fileID: 4932248287941788629}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -205,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bulletPrefab: {fileID: 6353848712235746294, guid: 85bd766ec72c19f439ca362700931407, type: 3}
+  m_isEnemy: 1
 --- !u!114 &4159840826349617152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,3 +226,23 @@ MonoBehaviour:
   - {fileID: 955004577593888086, guid: 65f164569dd3c134b8d4dd6c783a746a, type: 3}
   m_timeToScribble: 0.5
   m_destroyOnCompletion: 1
+--- !u!114 &4932248287941788629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560400538089177818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e00a99517ff254b91f03290f335cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyAttackClips:
+  - {fileID: 8300000, guid: 9a5643ce39faf704c8be8de030240044, type: 3}
+  - {fileID: 8300000, guid: 1d7b2296ee025b242942a5e0cbee93e3, type: 3}
+  m_enemyDamaged:
+  - {fileID: 8300000, guid: 9be09d2bd905b8b40aab0a39b2655c23, type: 3}
+  - {fileID: 8300000, guid: a4a7ffe992132ab409ca495f31c39cf0, type: 3}
+  - {fileID: 8300000, guid: badc4ad482070e84a8179aa602accefc, type: 3}
+  - {fileID: 8300000, guid: e8112656f46596340ba8138e675c778d, type: 3}
