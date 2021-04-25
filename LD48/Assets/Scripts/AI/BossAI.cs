@@ -89,8 +89,6 @@ public class BossAI : MonoBehaviour
     private int m_playerImpactDamage = 2;
 
     [SerializeField]
-    private Color m_stage3Colour;
-    [SerializeField]
     private float m_deathDuration = 5.0f;
     [SerializeField]
     private GameObject m_deathDrop = null;
@@ -106,6 +104,7 @@ public class BossAI : MonoBehaviour
     private GameObject m_player;
     private PlayerCamera m_camera;
     private AudioCharacterBoss m_audio;
+    private BossVisuals m_visuals;
 
     private bool m_stateChanged = false;
     private float m_timeInState = 0.0f;
@@ -113,6 +112,17 @@ public class BossAI : MonoBehaviour
     private float m_timeSinceLastSpawned = 0.0f;
     private float m_randomisedTotalTimeInState = 0.0f;
     private bool m_pounceComplete = false;
+
+    public int GetStage()
+    {
+        return m_stage;
+    }
+
+    public BossState GetState()
+    {
+        return m_state;
+    }
+
     public void Die()
     {
         if(m_state != BossState.Dying)
@@ -132,6 +142,7 @@ public class BossAI : MonoBehaviour
         m_health = GetComponent<AIDamage>();
         m_movement = GetComponent<AIMovementHelper>();
         m_shooting = GetComponent<ShootingHelper>();
+        m_visuals = GetComponent<BossVisuals>();
         m_player = GameMaster.GetPlayer();
         m_camera = GameMaster.GetPlayerCamera();
     }
@@ -253,7 +264,7 @@ public class BossAI : MonoBehaviour
 
         if (m_timeInState > m_roarTime * 0.5f && m_stage == 3)
         {
-            m_renderer.color = m_stage3Colour;
+            m_visuals.FinalForm();
         }
 
         if (m_timeInState > m_roarTime)

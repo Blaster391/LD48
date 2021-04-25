@@ -23,6 +23,7 @@ public class PlayerFace : MonoBehaviour
 
     void Start()
     {
+        m_lastUpdateTime = Random.value;
         m_health = GameMaster.GetPlayer().GetComponent<PlayerHealth>();
         m_renderer = GetComponent<SpriteRenderer>();
     }
