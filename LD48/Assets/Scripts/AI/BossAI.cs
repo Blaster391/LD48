@@ -195,6 +195,7 @@ public class BossAI : MonoBehaviour
         if (m_stage < 3 && m_health.GetHealth() < m_stage3HealthThreshold)
         {
             ChangeState(BossState.Roar);
+            GameMaster.GetAudioManager().StartBossLastPhase();
             m_stage = 3;
             return;
         }

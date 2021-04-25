@@ -16,7 +16,11 @@ public class PlayerCameraTriggerArea : MonoBehaviour
     {
         if (collision.gameObject == GameMaster.GetPlayer())
         {
-            GameMaster.GetPlayerCamera().ClearTriggerArea();
+            if(! GameMaster.GetPlayer().GetComponent<PlayerHealth>().IsDead())
+            {
+                GameMaster.GetPlayerCamera().ClearTriggerArea();
+            }
+
         }
     }
 }

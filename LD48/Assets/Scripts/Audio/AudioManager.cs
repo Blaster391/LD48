@@ -35,21 +35,70 @@ public class AudioManager : MonoBehaviour
     private float m_fadeTime = 3.0f;
 
     [SerializeField]
+    private float m_bossFadeOutTime = 3.0f;
+
+    [SerializeField]
     private float m_bgmVolume = 1.0f;
 
     private bool m_changing = false;
     private bool m_source2Active = false;
     private float m_source2Lerp = 0.0f;
+    private int m_currentBGMPhase = -1;
+    private bool m_bossWarmupFade = false;
+
+    private float m_fadeOutLerp = 0.0f;
 
     void Awake()
     {
         GameMaster.RegisterAudioManager(this);
+        StartBGMPhase(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(m_bossWarmupFade)
+        {
+            float changeRate = 1 / m_bossFadeOutTime;
+            float changeDelta = changeRate * Time.deltaTime;
+            m_fadeOutLerp += changeDelta;
+            m_fadeOutLerp = Mathf.Clamp01(m_fadeOutLerp);
+
+            m_bgmSource1.volume = (1.0f - m_fadeOutLerp);
+            m_bgmSource2.volume = (1.0f - m_fadeOutLerp);
+
+            if (m_fadeOutLerp >= 1.0f)
+            {
+                PlayOnActiveBGMTrack(m_bossBuildupMusic, true);
+
+                m_bgmSource1.volume = (1.0f);
+                m_bgmSource2.volume = (1.0f);
+
+                m_bossWarmupFade = false;
+            }
+        }
+        else if(m_changing)
+        {
+            if(m_source2Active && m_source2Lerp >= 1.0f)
+            {
+                m_bgmSource1.Stop();
+                m_changing = false;
+            }
+            else if (!m_source2Active && m_source2Lerp <= 0.0f)
+            {
+                m_bgmSource2.Stop();
+                m_changing = false;
+            }
+
+            float changeRate = 1 / m_fadeTime;
+            float changeDelta = changeRate * Time.deltaTime;
+
+            m_source2Lerp += (m_source2Active ? changeDelta : -changeDelta);
+            m_source2Lerp = Mathf.Clamp01(m_source2Lerp);
+
+            m_bgmSource1.volume = (1.0f - m_source2Lerp);
+            m_bgmSource2.volume = (m_source2Lerp);
+        }
     }
 
     public GameObject CreateAndPlayAudioObject(AudioClip _clip)
@@ -71,7 +120,12 @@ public class AudioManager : MonoBehaviour
 
     public void StartBGMPhase(int _phase)
     {
-        FadeToTrack(m_bgmTracks[_phase]);
+        if(_phase != m_currentBGMPhase)
+        {
+            m_currentBGMPhase = _phase;
+            FadeToTrack(m_bgmTracks[_phase]);
+        }
+
     }
 
     public void GameOver()
@@ -82,11 +136,12 @@ public class AudioManager : MonoBehaviour
 
     public void StartBossBuildupMusic()
     {
-        PlayOnActiveBGMTrack(m_bossBuildupMusic, true);
+        m_bossWarmupFade = true;
     }
 
     public void StartBossMusic()
     {
+        m_bossWarmupFade = false;
         PlayOnActiveBGMTrack(m_bossMusic);
     }
 
@@ -128,6 +183,16 @@ public class AudioManager : MonoBehaviour
     private void FadeToTrack(AudioClip _clip)
     {
         m_source2Active = !m_source2Active;
+        m_changing = true;
         PlayOnActiveBGMTrack(_clip);
+        if(m_source2Active)
+        {
+            m_bgmSource2.time = m_bgmSource1.time;
+        }
+        else
+        {
+            m_bgmSource1.time = m_bgmSource2.time;
+        }
+
     }
 }
