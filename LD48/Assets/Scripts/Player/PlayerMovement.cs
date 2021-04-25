@@ -110,6 +110,11 @@ public class PlayerMovement : MonoBehaviour
             movement += Vector2.left;
         }
 
+        if(movement != Vector2.zero)
+        {
+            movement.Normalize();
+        }
+
         return movement;
     }
 

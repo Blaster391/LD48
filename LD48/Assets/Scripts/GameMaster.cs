@@ -8,7 +8,7 @@ public class GameMaster : MonoBehaviour
     GameObject m_player = null;
     PlayerCamera m_playerCamera = null;
     AudioManager m_audioManager = null;
-
+    FlickerManager m_flickerManager = null;
     static public GameMaster GetGameMaster()
     {
         if(m_master == null)
@@ -47,6 +47,16 @@ public class GameMaster : MonoBehaviour
     public static AudioManager GetAudioManager()
     {
         return GetGameMaster().m_audioManager;
+    }
+
+    public static void RegisterFlickerManager(FlickerManager _manager)
+    {
+        GetGameMaster().m_flickerManager = _manager;
+    }
+
+    public static FlickerManager GetFlickerManager()
+    {
+        return GetGameMaster().m_flickerManager;
     }
 }
 
