@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2109562786015689398}
   - component: {fileID: 2109562786015689397}
   - component: {fileID: 2109562786015689396}
+  - component: {fileID: 4415972289964561134}
   m_Layer: 0
   m_Name: TriggerSpawnerBase
   m_TagString: Untagged
@@ -81,5 +82,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a75e3a860e063064f89fa9c79cc7a13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spawnPoints: []
+  m_possibleMonsters: []
+  m_chance: 0
+  m_min: 0
+  m_max: 0
+  m_triggerOnce: 1
+--- !u!114 &4415972289964561134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109562786015689387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b77b3da3a4ac348bdfc92039158cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

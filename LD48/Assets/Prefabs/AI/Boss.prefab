@@ -207,7 +207,13 @@ MonoBehaviour:
   m_roar:
   - {fileID: 8300000, guid: 375f348f3e493a2458e4a8337e2a6325, type: 3}
   - {fileID: 8300000, guid: 30a26b90bc726ee4b87fe4fd33cac0d9, type: 3}
-  m_damaged: []
+  m_damaged:
+  - {fileID: 8300000, guid: 53f63fa8c2ecd3e4384924fe61effe20, type: 3}
+  - {fileID: 8300000, guid: 06621aae51913c74296b7ce6f4b5c4e6, type: 3}
+  - {fileID: 8300000, guid: 7860d9dd6e02eb54f9bb2cda2c01113f, type: 3}
+  - {fileID: 8300000, guid: cb13a7ff017a21a4d94f5cc6b493c317, type: 3}
+  - {fileID: 8300000, guid: fd4f37c794dff0c4e82de1f063b6fba6, type: 3}
+  - {fileID: 8300000, guid: b8192c0324a27424c8df9e0159c0a183, type: 3}
   m_deathRoar: {fileID: 8300000, guid: 8036d869ea4652c4db15f3952fcb24db, type: 3}
 --- !u!114 &1715547063313648977
 MonoBehaviour:

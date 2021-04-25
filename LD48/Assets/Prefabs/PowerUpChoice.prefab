@@ -300,8 +300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_successClip: {fileID: 8300000, guid: 51090d6d96324004886194f51087e19d, type: 3}
   m_failClip: {fileID: 8300000, guid: 6f74e29b12c43494889cd0dd32f57409, type: 3}
-  m_goodPowerups: 02000000030000000400000005000000
-  m_badPowerups: 08000000090000000a000000
+  m_goodPowerups: 020000000300000004000000
+  m_badPowerups: 0800000009000000
   m_successChance: 1
   m_successSprite: {fileID: 21300000, guid: ab996ba24d5b33b42a5cf22f944f8dfb, type: 3}
   m_failSprite: {fileID: 21300000, guid: 10f89725fe0ff404f8c844e40b18175f, type: 3}
