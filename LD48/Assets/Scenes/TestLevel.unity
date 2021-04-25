@@ -1789,6 +1789,27 @@ MonoBehaviour:
   m_gameEndPanel: {fileID: 275914551}
   m_gameEndScreen: {fileID: 174961823}
   m_endSkyboxColour: {r: 0, g: 1, b: 0, a: 0}
+--- !u!114 &1939696200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939696198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49836cb61f083d408a586bb79f4e885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerAttackClips:
+  - {fileID: 8300000, guid: 32fb943309ec2634397eedfe8874fe4e, type: 3}
+  - {fileID: 8300000, guid: 4682451ffbdced542b380c5eeb644107, type: 3}
+  - {fileID: 8300000, guid: 220527370520b444596b019d3ed7d3d7, type: 3}
+  m_playerDamaged:
+  - {fileID: 8300000, guid: 7f52843d043792a4aa860d704bf28051, type: 3}
+  - {fileID: 8300000, guid: ef90a3abd04f10a45b62e83f608e973e, type: 3}
+  - {fileID: 8300000, guid: 4b91fca483566a445ad8fa4fb528a9e5, type: 3}
+  - {fileID: 8300000, guid: d6ba076d0ef1c3a4ca594c4dac6bb867, type: 3}
 --- !u!4 &1939696208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 791915529201239420, guid: 54041d5dd8cca5a498ceca13b58da4f4, type: 3}
@@ -2556,42 +2577,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 544078657, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: c6172851d1c1b5e46bf957cbec6df56f, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bgmTracks.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bgmTracks.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: c6172851d1c1b5e46bf957cbec6df56f, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bgmTracks.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 915d2826f374c0f4182fa993f0b9a103, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bgmTracks.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 02122d4ef47388048aca167b2fb5a230, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bgmTracks.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 55378c3118769c542b821140479844ef, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bgmTracks.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 72da97f08d40dfe4a8e0eac96e8df0e5, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bossBuildupMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 5214f1c25902c8a45ba4776b69139673, type: 3}
-    - target: {fileID: 544078658, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
-      propertyPath: m_bossMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: fd2e8b98c004bad4282a76abffc96716, type: 3}
     - target: {fileID: 6434632411638111875, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

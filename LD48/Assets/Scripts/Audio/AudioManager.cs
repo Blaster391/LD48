@@ -5,6 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField]
+    private GameObject m_audioObject;
+
+    [SerializeField]
     private List<AudioClip> m_bgmTracks;
 
     [SerializeField]
@@ -19,6 +22,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     AudioClip m_endGameTrack;
+
+    [SerializeField]
+    AudioClip m_gameOverTrack;
 
     [SerializeField]
     private AudioSource m_bgmSource1;
@@ -46,6 +52,15 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    public GameObject CreateAndPlayAudioObject(AudioClip _clip)
+    {
+        GameObject audioObject = Instantiate<GameObject>(m_audioObject, transform.position, Quaternion.identity, transform);
+
+        audioObject.GetComponent<AudioObject>().Initialize(_clip);
+
+        return audioObject;
+    }
+
     public void StopBGM()
     {
         m_bgmSource1.Stop();
@@ -57,6 +72,12 @@ public class AudioManager : MonoBehaviour
     public void StartBGMPhase(int _phase)
     {
         FadeToTrack(m_bgmTracks[_phase]);
+    }
+
+    public void GameOver()
+    {
+        StopBGM();
+        PlayOnActiveBGMTrack(m_gameOverTrack, true);
     }
 
     public void StartBossBuildupMusic()

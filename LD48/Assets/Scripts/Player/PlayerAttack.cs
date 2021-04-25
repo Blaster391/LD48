@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]
     private float m_attackSpeedPowerUpMod = 1.0f;
 
+    private AudioCharacterPlayer m_audio;
     private PlayerControls m_controls;
     private PlayerMovement m_movement;
     private ShootingHelper m_shoot;
@@ -43,6 +44,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        m_audio = GetComponent<AudioCharacterPlayer>();
         m_controls = GetComponent<PlayerControls>();
         m_movement = GetComponent<PlayerMovement>();
         m_shoot = GetComponent<ShootingHelper>();
@@ -100,6 +102,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
+        m_audio.TriggerPlayerAttack();
+
         Vector2 attackDirection = GetAttackDirection();
         for(int i = 0; i < m_currentAttackCount; ++i)
         {

@@ -20,6 +20,7 @@ public class PlayerHealth : IDamageReceiver
     [SerializeField]
     private GameObject m_gameOverScreen = null;
 
+    private AudioCharacterPlayer m_audio;
     private Scribbler m_scribbler;
 
     public override void ReceiveDamage(int _damage)
@@ -33,9 +34,11 @@ public class PlayerHealth : IDamageReceiver
         if(m_currentHealth <= 0)
         {
             m_scribbler.BeginScribble();
+            GameMaster.GetAudioManager().GameOver();
         }
         else
         {
+            m_audio.TriggerPlayerDamaged();
             m_iFramesRemaining = m_iFrameTime;
         }
     }
@@ -50,7 +53,7 @@ public class PlayerHealth : IDamageReceiver
 
     public bool IsDead()
     {
-        return (m_baseHealth <= 0);
+        return (m_currentHealth <= 0);
     }
 
     public bool IsInvincible()
@@ -74,6 +77,7 @@ public class PlayerHealth : IDamageReceiver
         m_maxHealth = m_baseHealth;
         m_currentHealth = m_baseHealth;
         m_scribbler = GetComponent<Scribbler>();
+        m_audio = GetComponent<AudioCharacterPlayer>();
     }
     private void Update()
     {
