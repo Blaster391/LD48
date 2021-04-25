@@ -5,6 +5,9 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip m_pickupFX;
+
+    [SerializeField]
     private string m_id;
     [SerializeField]
     private Color m_color;
@@ -18,6 +21,11 @@ public class Key : MonoBehaviour
     {
         if (collision.gameObject == GameMaster.GetPlayer())
         {
+            if(m_pickupFX != null)
+            {
+                GameMaster.GetAudioManager().CreateAndPlayAudioObject(m_pickupFX);
+            }
+
             PlayerKeys playerKeys = collision.gameObject.GetComponent<PlayerKeys>();
             playerKeys.RegisterKey(m_id, m_color);
             Destroy(gameObject);

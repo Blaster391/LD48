@@ -22,6 +22,11 @@ public enum PowerUpTypes
 public class PowerUpSpot : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip m_successClip;
+    [SerializeField]
+    private AudioClip m_failClip;
+
+    [SerializeField]
     private List<PowerUpTypes> m_goodPowerups = new List<PowerUpTypes>();
     [SerializeField]
     private List<PowerUpTypes> m_badPowerups = new List<PowerUpTypes>();
@@ -64,6 +69,7 @@ public class PowerUpSpot : MonoBehaviour
                 playerPowerups.HandlePowerup(m_goodPowerups[Random.Range(0, m_goodPowerups.Count)]);
             }
 
+            GameMaster.GetAudioManager().CreateAndPlayAudioObject(m_successClip);
 
             GetComponent<SpriteRenderer>().sprite = m_successSprite;
         }
@@ -74,6 +80,7 @@ public class PowerUpSpot : MonoBehaviour
                 playerPowerups.HandlePowerup(m_badPowerups[Random.Range(0, m_badPowerups.Count)]);
             }
 
+            GameMaster.GetAudioManager().CreateAndPlayAudioObject(m_failClip);
             GetComponent<SpriteRenderer>().sprite = m_failSprite;
         }
 

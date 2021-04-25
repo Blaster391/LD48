@@ -122,5 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823e36c05f932034984c256df89d3c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_pickupFX: {fileID: 8300000, guid: 8fa0ed1c36cf12e438388c9b48223a6d, type: 3}
   m_id: test
   m_color: {r: 1, g: 0, b: 0.6173749, a: 0}

@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37afa93aaf6c0e41aa1943464ea69d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_successClip: {fileID: 8300000, guid: 1dabac24505752542990091cf4865cfa, type: 3}
+  m_failClip: {fileID: 8300000, guid: 6e8b3a9c262efd7438760e984866c972, type: 3}
   m_goodPowerups: 0000000001000000
   m_badPowerups: 0600000007000000
   m_successChance: 1
@@ -296,6 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37afa93aaf6c0e41aa1943464ea69d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_successClip: {fileID: 8300000, guid: 51090d6d96324004886194f51087e19d, type: 3}
+  m_failClip: {fileID: 8300000, guid: 6f74e29b12c43494889cd0dd32f57409, type: 3}
   m_goodPowerups: 02000000030000000400000005000000
   m_badPowerups: 08000000090000000a000000
   m_successChance: 1

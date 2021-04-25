@@ -5,6 +5,9 @@ using UnityEngine;
 public class DestroyableProp : IDamageReceiver
 {
     [SerializeField]
+    private AudioClip m_hitFX;
+
+    [SerializeField]
     private int m_baseHealth = 1;
     [SerializeField]
     private int m_currentHealth = 1;
@@ -38,6 +41,7 @@ public class DestroyableProp : IDamageReceiver
 
             if (m_scribbler != null)
             {
+                GameMaster.GetAudioManager().CreateAndPlayAudioObject(m_hitFX);
                 m_scribbler.BeginScribble();
             }
             else

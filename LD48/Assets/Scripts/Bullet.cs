@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
     [SerializeField]
     private float m_lifetime = 30.0f;
     private float m_age = 0.0f;

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip m_openFX;
+
+    [SerializeField]
     private string m_id;
 
     void Start()
@@ -32,6 +35,12 @@ public class Door : MonoBehaviour
             {
                 playerKeys.RemoveKey(m_id);
                 GetComponent<Fader>().StartFade();
+
+                if(m_openFX != null)
+                {
+                    GameMaster.GetAudioManager().CreateAndPlayAudioObject(m_openFX);
+                }
+
             }
         }
     }
