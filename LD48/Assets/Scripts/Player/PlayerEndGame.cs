@@ -99,7 +99,11 @@ public class PlayerEndGame : MonoBehaviour
                     }
                     else if (Input.GetKeyDown(KeyCode.Escape))
                     {
-                        Application.Quit();
+#if UNITY_WEBGL
+                        SceneManager.LoadScene(0, LoadSceneMode.Single);
+#else
+                Application.Quit();
+#endif
                     }
                 }
             }

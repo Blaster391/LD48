@@ -44,7 +44,11 @@ public class MainMenu : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+#if UNITY_WEBGL
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+#else
             Application.Quit();
+#endif
         }
 
 

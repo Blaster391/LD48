@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -18,7 +19,11 @@ public class PlayerControls : MonoBehaviour
             m_quitTimer += Time.deltaTime;
             if(m_quitTimer > 1.0f || GetComponent<PlayerEndGame>().IsGameFinished())
             {
+#if UNITY_WEBGL
+                SceneManager.LoadScene(0, LoadSceneMode.Single);
+#else
                 Application.Quit();
+#endif
             }
 
             m_quitGameNotification.SetActive(true);
