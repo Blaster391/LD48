@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54884569e94815438c3315ea3caac4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 100
+  m_health: 800
 --- !u!114 &186167548695494638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,35 +98,35 @@ MonoBehaviour:
   m_shotgunChance: 0.5
   m_spinChance: 0.5
   m_summonChance: 0.5
-  m_restChance: 0.25
-  m_stage2HealthThreshold: 75
-  m_stage3HealthThreshold: 30
+  m_restChance: 0.35
+  m_stage2HealthThreshold: 600
+  m_stage3HealthThreshold: 250
   m_minimumRestTime: 3
   m_maximumRestTime: 5
   m_roarTime: 2
-  m_pounceChargeTime: 2
+  m_pounceChargeTime: 1.5
   m_pounceSpeed: 20
   m_pounceTime: 2
   m_pounceOvershoot: 5
   m_spinAttackRotationSpeed: 15
   m_spinAttackMovementSpeed: 10
   m_spinAttackStageRotationSpeedMod: 1.5
-  m_spinAttackDuration: 5
+  m_spinAttackDuration: 2.5
   m_spinAttackStageDurationMod: 2
   m_spinAttackStageSpeedMod: 2
   m_spinAttackWindup: 2
   m_spinAttackSpeed: 2
   m_spinAttackBulletSpeed: 10
-  m_shotgunDuration: 5
+  m_shotgunDuration: 3
   m_shotgunAttackSpeed: 0.5
   m_shotgunAttackInaccuracy: 0.25
   m_shotgunAttackVelocityVariance: 2
   m_shotgunAttackCountMin: 7
   m_shotgunAttackCountMax: 10
   m_shotgunBulletSpeed: 10
-  m_summonDuration: 5
-  m_summonSpeed: 1
-  m_playerImpactDamage: 2
+  m_summonDuration: 6
+  m_summonSpeed: 2
+  m_playerImpactDamage: 1
   m_deathDuration: 5
   m_deathDrop: {fileID: 3619516752318740473, guid: 6b733d7bcdd9a2f45901dc9ccb16f9ce, type: 3}
 --- !u!58 &186167548695494612

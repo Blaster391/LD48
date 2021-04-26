@@ -22,6 +22,15 @@ public class AITriggerArea : MonoBehaviour
         {
             m_active = true;
         }
+
+        if(!m_active)
+        {
+            if (collision.gameObject.GetComponent<Bullet>() != null)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -109,7 +109,15 @@ public class PlayerAttack : MonoBehaviour
         {
             Vector2 attackNormal = attackDirection.PerpendicularClockwise();
             Vector2 inaccuracy = attackNormal * MathsHelper.RandomWithNegative() * (m_currentInaccuracy * (i + 1));
-            Vector2 attackVelocity = (attackDirection + inaccuracy) * (m_currentProjectileSpeed + m_currentInaccuracy * UnityEngine.Random.value) + (m_movement.CurrentVelocity() * m_velocityMod);
+            Vector2 attackVelocity = (attackDirection + inaccuracy) * (m_currentProjectileSpeed);
+
+            Vector2 modifiedVelocity = attackVelocity + (m_movement.CurrentVelocity() * m_velocityMod);
+
+            if(attackVelocity.magnitude < modifiedVelocity.magnitude)
+            {
+                attackVelocity = modifiedVelocity;
+            }
+
             m_shoot.Shoot(attackVelocity, m_currentAttackDamage);
         }
     }
@@ -162,6 +170,11 @@ public class PlayerAttack : MonoBehaviour
         else if (leftPressed)
         {
             direction += Vector2.left;
+        }
+
+        if(direction != Vector2.zero)
+        {
+            direction.Normalize();
         }
 
         return direction;
