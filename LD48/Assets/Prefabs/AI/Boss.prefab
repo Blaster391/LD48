@@ -125,7 +125,7 @@ MonoBehaviour:
   m_shotgunAttackCountMax: 10
   m_shotgunBulletSpeed: 10
   m_summonDuration: 6
-  m_summonSpeed: 2
+  m_summonSpeed: 0.5
   m_playerImpactDamage: 1
   m_deathDuration: 5
   m_deathDrop: {fileID: 3619516752318740473, guid: 6b733d7bcdd9a2f45901dc9ccb16f9ce, type: 3}

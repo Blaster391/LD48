@@ -69775,7 +69775,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434632411638111884, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
       propertyPath: orthographic size
-      value: 16
+      value: 16.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434632411638111884, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434632411638111884, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434632411638111884, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434632411638111884, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6434632411638111886, guid: 31824d24766c85c40b6c81c9cfeffa91, type: 3}
       propertyPath: m_Name
