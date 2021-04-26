@@ -11,6 +11,8 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        Cursor.visible = false;
+
         if(Input.GetKey(KeyCode.Escape))
         {
             m_quitTimer += Time.deltaTime;

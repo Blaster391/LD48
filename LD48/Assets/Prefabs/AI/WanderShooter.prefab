@@ -190,7 +190,7 @@ MonoBehaviour:
   m_attackSpeedRand: 1
   m_projectileSpeed: 10
   m_attackDamage: 1
-  m_move: 1
+  m_move: 0
   m_aimAtPlayer: 0
   m_inaccuracy: 0.25
   m_firingDirections:

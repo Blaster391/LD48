@@ -23,6 +23,8 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.visible = false;
+
         m_lastUpdateTime += Time.deltaTime;
         float updateTime = 1 / m_flickerSpeed;
 

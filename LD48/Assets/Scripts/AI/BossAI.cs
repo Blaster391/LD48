@@ -393,8 +393,8 @@ public class BossAI : MonoBehaviour
             for(int i = 0; i < bulletsToFire; ++i)
             {
                 Vector2 attackNormal = playerDirection.PerpendicularClockwise();
-                Vector2 inaccuracy = attackNormal * MathsHelper.RandomWithNegative() * (m_shotgunAttackInaccuracy);
-                Vector2 attackVelocity = (playerDirection + inaccuracy) * (m_shotgunBulletSpeed * m_stage + m_shotgunAttackVelocityVariance * Random.value);
+                Vector2 inaccuracy = attackNormal * MathsHelper.RandomWithNegative() * (m_shotgunAttackInaccuracy * m_stage);
+                Vector2 attackVelocity = (playerDirection + inaccuracy) * (m_shotgunBulletSpeed + m_shotgunAttackVelocityVariance * m_stage * Random.value);
                 m_shooting.Shoot(attackVelocity, 1);
             }
 
