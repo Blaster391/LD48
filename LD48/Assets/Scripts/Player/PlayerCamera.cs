@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerCamera : MonoBehaviour
 {
     [SerializeField]
@@ -40,6 +41,7 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 desiredPosition = GetDesiredCameraPosition();
         Vector3 actualPosition = desiredPosition;
 
